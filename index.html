@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Une petite surprise ❤️</title>
+
+<title>Une invitation de Hermann ❤️</title>
 
 <style>
 *{box-sizing:border-box}
@@ -32,11 +33,20 @@ position:relative;
 z-index:2
 }
 
-.emoji{font-size:55px;margin-bottom:10px}
+.emoji{
+font-size:55px;
+margin-bottom:10px
+}
 
-h1{font-size:27px;margin:10px 0}
+h1{
+font-size:27px;
+margin:10px 0
+}
 
-p{line-height:1.6;font-size:16px}
+p{
+line-height:1.6;
+font-size:16px
+}
 
 button{
 border:none;
@@ -49,15 +59,27 @@ cursor:pointer;
 transition:.25s
 }
 
-button:hover{transform:scale(1.05)}
+button:hover{
+transform:scale(1.05)
+}
 
-.primary{background:#ff5c8a;color:white}
+.primary{
+background:#ff5c8a;
+color:white
+}
 
-.secondary{background:#f5d9df;color:#642b3b}
+.secondary{
+background:#f5d9df;
+color:#642b3b
+}
 
-.hidden{display:none}
+.hidden{
+display:none
+}
 
-.choice-container{margin-top:20px}
+.choice-container{
+margin-top:20px
+}
 
 .place{
 padding:20px;
@@ -79,10 +101,11 @@ font-size:21px;
 margin-bottom:5px
 }
 
-input[type="date"]{
+input[type="date"],
+input[type="time"]{
 width:100%;
 padding:15px;
-margin:20px 0;
+margin:10px 0;
 border:2px solid #ffd0dc;
 border-radius:14px;
 font-size:17px;
@@ -90,10 +113,18 @@ background:#fff8fa
 }
 
 .date{
-font-size:20px;
+font-size:19px;
 font-weight:bold;
 color:#e74673;
-margin:15px 0
+margin:12px 0
+}
+
+.invitation{
+background:#fff0f4;
+padding:15px;
+border-radius:18px;
+margin:15px 0;
+font-style:italic
 }
 
 .buttons{
@@ -102,7 +133,9 @@ min-height:100px;
 margin-top:20px
 }
 
-#noBtn{position:absolute}
+#noBtn{
+position:absolute
+}
 
 #yesBtn{
 position:relative;
@@ -140,33 +173,53 @@ opacity:0
 
 <div class="card">
 
+<!-- ÉCRAN 1 -->
+
 <section id="screen1">
 
 <div class="emoji">💌</div>
 
-<h1>J'ai une petite question pour toi...</h1>
+<h1>Une petite invitation de Hermann ❤️</h1>
 
-<p>Je ne vais pas faire un long discours 😌</p>
+<div class="invitation">
 
 <p>
-J'aimerais simplement t'inviter à passer
-un petit moment avec moi. ❤️
+<strong>Hermann</strong> aimerait t'inviter
+à partager un petit moment avec lui. 🥰
+</p>
+
+<p>
+Pas besoin d'un grand programme...
+juste une petite sortie, une glace,
+et surtout un joli moment à deux. ❤️
+</p>
+
+</div>
+
+<p>
+Alors... est-ce que tu veux découvrir
+son invitation ? 👀
 </p>
 
 <button class="primary" onclick="showScreen(2)">
-Découvrir 👀
+Découvrir l'invitation 💕
 </button>
 
 </section>
 
 
+<!-- ÉCRAN 2 -->
+
 <section id="screen2" class="hidden">
 
 <div class="emoji">🍦</div>
 
-<h1>Une petite glace ?</h1>
+<h1>Hermann t'invite à manger une glace ❤️</h1>
 
-<p>J'ai déjà choisi l'endroit 😌</p>
+<p>
+Et il a déjà une petite idée
+de l'endroit... 😌
+</p>
 
 <div class="choice-container">
 
@@ -183,19 +236,27 @@ Découvrir 👀
 </section>
 
 
+<!-- ÉCRAN 3 -->
+
 <section id="screen3" class="hidden">
 
 <div class="emoji">📅</div>
 
-<h1>Et pour la date ?</h1>
+<h1>Choisis ton moment ❤️</h1>
 
 <p>
-Choisis le jour qui te convient le mieux 😊
+Hermann te laisse choisir la date
+et l'heure qui te conviennent. 😊
 </p>
 
 <input
 type="date"
 id="dateInput"
+>
+
+<input
+type="time"
+id="timeInput"
 >
 
 <button class="primary" onclick="confirmDate()">
@@ -205,13 +266,18 @@ C'est choisi ❤️
 </section>
 
 
+<!-- ÉCRAN 4 -->
+
 <section id="screen4" class="hidden">
 
 <div class="emoji">🥰</div>
 
-<h1>Parfait !</h1>
+<h1>Voilà notre petit rendez-vous ❤️</h1>
 
-<p>Donc on part sur :</p>
+<p>
+Hermann t'attendra pour une petite glace
+chez Cremino. 🍦
+</p>
 
 <div class="date">
 🍨 Cremino — UPN
@@ -219,13 +285,17 @@ C'est choisi ❤️
 
 <div id="selectedDate" class="date"></div>
 
+<div id="selectedTime" class="date"></div>
+
 <p>
-Maintenant, la vraie question... 👀
+Il reste juste une dernière petite question... 👀
 </p>
 
 <p>
-Est-ce que tu acceptes cette petite sortie
-avec moi ?
+<strong>
+Est-ce que tu acceptes l'invitation
+de Hermann ? ❤️
+</strong>
 </p>
 
 <div class="buttons">
@@ -234,7 +304,7 @@ avec moi ?
 id="yesBtn"
 class="primary"
 onclick="sendAnswer('Oui ❤️')">
-Oui ❤️
+Oui, avec plaisir 🥰
 </button>
 
 <button
@@ -249,28 +319,56 @@ Non 😭
 </section>
 
 
+<!-- ÉCRAN 5 -->
+
 <section id="screen5" class="hidden">
 
 <div class="emoji">🥰❤️🍦</div>
 
-<h1>Je savais que tu dirais oui ! 😭❤️</h1>
+<h1>Alors c'est officiel ! ❤️</h1>
 
-<p>Alors c'est officiel !</p>
+<p>
+Hermann est officiellement heureux
+de t'avoir invitée. 😭💕
+</p>
 
-<div class="date">
-🍨 Cremino — UPN
+<div class="invitation">
+
+<p>
+🍨 <strong>Cremino — UPN</strong>
+</p>
+
+<p id="finalDate"></p>
+
+<p id="finalTime"></p>
+
 </div>
 
-<div id="finalDate" class="date"></div>
+<p>
+Maintenant, il ne reste plus qu'à
+se retrouver et profiter de ce petit
+moment ensemble. 🥰
+</p>
 
-<p>Rendez-vous alors. 😉</p>
+<p>
+<strong>
+Merci d'avoir dit oui à Hermann. ❤️
+</strong>
+</p>
+
+<p>
+À très bientôt... 🍦💕
+</p>
 
 <p class="small">
-— Hermann ❤️
+Avec affection,<br>
+<strong>Hermann ❤️</strong>
 </p>
 
 </section>
 
+
+<!-- FORMULAIRE EMAIL -->
 
 <form id="responseForm">
 
@@ -283,13 +381,13 @@ value="b31f3874-0506-44db-a870-5a3915c57cc1"
 <input
 type="hidden"
 name="subject"
-value="❤️ Réponse à ton invitation"
+value="❤️ Réponse à l'invitation de Hermann"
 >
 
 <input
 type="hidden"
 name="from_name"
-value="Love Site Surprise"
+value="Invitation de Hermann"
 >
 
 <input
@@ -318,6 +416,7 @@ style="display:none"
 <script>
 
 let selectedDate="";
+let selectedTime="";
 
 
 function showScreen(number){
@@ -344,6 +443,8 @@ showScreen(3);
 }
 
 
+/* DATE MINIMUM = AUJOURD'HUI */
+
 const dateInput=
 document.getElementById("dateInput");
 
@@ -361,11 +462,17 @@ dateInput.min=
 `${year}-${month}-${day}`;
 
 
+/* CONFIRMATION DATE + HEURE */
+
 function confirmDate(){
 
-const value=dateInput.value;
+const dateValue=
+dateInput.value;
 
-if(!value){
+const timeValue=
+document.getElementById("timeInput").value;
+
+if(!dateValue){
 
 alert("Choisis d'abord une date 😊");
 
@@ -373,8 +480,19 @@ return;
 
 }
 
+if(!timeValue){
+
+alert("Choisis aussi une heure 🕐❤️");
+
+return;
+
+}
+
+
+/* FORMAT DATE */
+
 const date=
-new Date(value+"T00:00:00");
+new Date(dateValue+"T00:00:00");
 
 const options={
 weekday:"long",
@@ -393,18 +511,41 @@ selectedDate=
 selectedDate.charAt(0).toUpperCase()
 +selectedDate.slice(1);
 
+
+/* FORMAT HEURE */
+
+selectedTime=timeValue;
+
+
+/* AFFICHAGE */
+
 document
 .getElementById("selectedDate")
-.textContent=selectedDate;
+.textContent=
+"📅 "+selectedDate;
+
+document
+.getElementById("selectedTime")
+.textContent=
+"🕐 "+selectedTime;
+
 
 document
 .getElementById("finalDate")
-.textContent=selectedDate;
+.textContent=
+"📅 "+selectedDate;
+
+document
+.getElementById("finalTime")
+.textContent=
+"🕐 "+selectedTime;
 
 showScreen(4);
 
 }
 
+
+/* BOUTON NON QUI S'ENFUIT */
 
 function moveNo(){
 
@@ -423,11 +564,16 @@ button.style.transform=
 }
 
 
+/* ENVOI EMAIL */
+
 async function sendAnswer(answer){
 
 const message=`
 
-❤️ RÉPONSE À L'INVITATION
+❤️ RÉPONSE À L'INVITATION DE HERMANN
+
+💌 Hermann a invité cette personne
+à partager une petite glace.
 
 🍨 Lieu :
 Cremino — UPN
@@ -435,17 +581,22 @@ Cremino — UPN
 📅 Date choisie :
 ${selectedDate}
 
-💌 Réponse :
+🕐 Heure choisie :
+${selectedTime}
+
+💗 Réponse :
 ${answer}
 
 ━━━━━━━━━━━━━━
+
 Message envoyé automatiquement
-depuis le mini-site ❤️
+depuis l'invitation de Hermann ❤️
 `;
 
 document
 .getElementById("emailMessage")
 .value=message;
+
 
 const form=
 document.getElementById("responseForm");
@@ -481,7 +632,9 @@ createHearts();
 
 }else{
 
-alert("Réponse envoyée 😭");
+alert(
+"Réponse envoyée à Hermann 😭"
+);
 
 }
 
@@ -504,9 +657,11 @@ alert(
 }
 
 
+/* COEURS */
+
 function createHearts(){
 
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 
 setTimeout(()=>{
 
@@ -516,7 +671,12 @@ document.createElement("div");
 heart.className="heart";
 
 const hearts=[
-"❤️","💕","💗","💖","💘"
+"❤️",
+"💕",
+"💗",
+"💖",
+"💘",
+"🥰"
 ];
 
 heart.textContent=
@@ -538,7 +698,7 @@ setTimeout(()=>{
 heart.remove();
 },6000);
 
-},i*150);
+},i*120);
 
 }
 
