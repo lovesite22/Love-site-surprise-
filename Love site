@@ -4,426 +4,547 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Une petite surprise ❤️</title>
+
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffe5ec,#fff7f9);
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:#4a2430
 }
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffe5ec, #fff7f9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    color: #4a2430;
+
+.card{
+width:90%;
+max-width:430px;
+background:rgba(255,255,255,.97);
+border-radius:25px;
+padding:30px 22px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+position:relative;
+z-index:2
 }
-.card {
-    width: 90%;
-    max-width: 430px;
-    background: rgba(255,255,255,.97);
-    border-radius: 25px;
-    padding: 30px 22px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,.12);
-    position: relative;
-    z-index: 2;
+
+.emoji{font-size:55px;margin-bottom:10px}
+
+h1{font-size:27px;margin:10px 0}
+
+p{line-height:1.6;font-size:16px}
+
+button{
+border:none;
+border-radius:14px;
+padding:14px 22px;
+margin:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s
 }
-.emoji {
-    font-size: 55px;
-    margin-bottom: 10px;
+
+button:hover{transform:scale(1.05)}
+
+.primary{background:#ff5c8a;color:white}
+
+.secondary{background:#f5d9df;color:#642b3b}
+
+.hidden{display:none}
+
+.choice-container{margin-top:20px}
+
+.place{
+padding:20px;
+border-radius:18px;
+background:#fff0f4;
+border:2px solid transparent;
+cursor:pointer;
+transition:.25s
 }
-h1 {
-    font-size: 27px;
-    margin: 10px 0;
+
+.place:hover{
+transform:translateY(-3px);
+border-color:#ff7b9c
 }
-p {
-    line-height: 1.6;
-    font-size: 16px;
+
+.place strong{
+display:block;
+font-size:21px;
+margin-bottom:5px
 }
-button {
-    border: none;
-    border-radius: 14px;
-    padding: 14px 22px;
-    margin: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .25s;
+
+input[type="date"]{
+width:100%;
+padding:15px;
+margin:20px 0;
+border:2px solid #ffd0dc;
+border-radius:14px;
+font-size:17px;
+background:#fff8fa
 }
-button:hover {
-    transform: scale(1.05);
+
+.date{
+font-size:20px;
+font-weight:bold;
+color:#e74673;
+margin:15px 0
 }
-.primary {
-    background: #ff5c8a;
-    color: white;
+
+.buttons{
+position:relative;
+min-height:100px;
+margin-top:20px
 }
-.secondary {
-    background: #f5d9df;
-    color: #642b3b;
+
+#noBtn{position:absolute}
+
+#yesBtn{
+position:relative;
+z-index:5
 }
-.hidden {
-    display: none;
+
+.small{
+font-size:13px;
+opacity:.7
 }
-.choice-container {
-    margin-top: 20px;
+
+.heart{
+position:fixed;
+bottom:-30px;
+font-size:22px;
+animation:floatUp 5s linear forwards;
+pointer-events:none;
+z-index:1
 }
-.place {
-    padding: 20px;
-    border-radius: 18px;
-    background: #fff0f4;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: .25s;
+
+@keyframes floatUp{
+from{
+transform:translateY(0) rotate(0);
+opacity:1
 }
-.place:hover {
-    transform: translateY(-3px);
-    border-color: #ff7b9c;
+to{
+transform:translateY(-110vh) rotate(360deg);
+opacity:0
 }
-.place strong {
-    display: block;
-    font-size: 21px;
-    margin-bottom: 5px;
-}
-input[type="date"] {
-    width: 100%;
-    padding: 15px;
-    margin: 20px 0;
-    border: 2px solid #ffd0dc;
-    border-radius: 14px;
-    font-size: 17px;
-    background: #fff8fa;
-}
-.date {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e74673;
-    margin: 15px 0;
-}
-.buttons {
-    position: relative;
-    min-height: 100px;
-    margin-top: 20px;
-}
-#noBtn {
-    position: absolute;
-}
-#yesBtn {
-    position: relative;
-    z-index: 5;
-}
-.small {
-    font-size: 13px;
-    opacity: .7;
-}
-.heart {
-    position: fixed;
-    bottom: -30px;
-    font-size: 22px;
-    animation: floatUp 5s linear forwards;
-    pointer-events: none;
-    z-index: 1;
-}
-@keyframes floatUp {
-    from {
-        transform: translateY(0) rotate(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
 }
 </style>
 </head>
+
 <body>
+
 <div class="card">
-    <!-- ÉCRAN 1 -->
-    <section id="screen1">
-        <div class="emoji">💌</div>
-        <h1>J'ai une petite question pour toi...</h1>
-        <p>
-            Je ne vais pas faire un long discours 😌
-        </p>
-        <p>
-            J'aimerais simplement t'inviter à passer
-            un petit moment avec moi. ❤️
-        </p>
-        <button class="primary" onclick="showScreen(2)">
-            Découvrir 👀
-        </button>
-    </section>
-    <!-- ÉCRAN 2 -->
-    <section id="screen2" class="hidden">
-        <div class="emoji">🍦</div>
-        <h1>Une petite glace ?</h1>
-        <p>
-            J'ai déjà choisi l'endroit 😌
-        </p>
-        <div class="choice-container">
-            <div class="place" onclick="choosePlace()">
-                <strong>🍨 Cremino</strong>
-                <span>UPN</span>
-            </div>
-        </div>
-    </section>
-    <!-- ÉCRAN 3 -->
-    <section id="screen3" class="hidden">
-        <div class="emoji">📅</div>
-        <h1>Et pour la date ?</h1>
-        <p>
-            Choisis le jour qui te convient le mieux 😊
-        </p>
-        <input
-            type="date"
-            id="dateInput"
-        >
-        <button class="primary" onclick="confirmDate()">
-            C'est choisi ❤️
-        </button>
-    </section>
-    <!-- ÉCRAN 4 -->
-    <section id="screen4" class="hidden">
-        <div class="emoji">🥰</div>
-        <h1>Parfait !</h1>
-        <p>
-            Donc on part sur :
-        </p>
-        <div class="date">
-            🍨 Cremino — UPN
-        </div>
-        <div id="selectedDate" class="date"></div>
-        <p>
-            Maintenant, la vraie question... 👀
-        </p>
-        <p>
-            Est-ce que tu acceptes cette petite sortie
-            avec moi ?
-        </p>
-        <div class="buttons">
-            <button
-                id="yesBtn"
-                class="primary"
-                onclick="sendAnswer('Oui ❤️')">
-                Oui ❤️
-            </button>
-            <button
-                id="noBtn"
-                class="secondary"
-                onclick="moveNo()">
-                Non 😭
-            </button>
-        </div>
-    </section>
-    <!-- ÉCRAN FINAL -->
-    <section id="screen5" class="hidden">
-        <div class="emoji">🥰❤️🍦</div>
-        <h1>Je savais que tu dirais oui ! 😭❤️</h1>
-        <p>
-            Alors c'est officiel !
-        </p>
-        <div class="date">
-            🍨 Cremino — UPN
-        </div>
-        <div id="finalDate" class="date"></div>
-        <p>
-            Rendez-vous alors. 😉
-        </p>
-        <p class="small">
-            — Hermann ❤️
-        </p>
-    </section>
-    <!-- FORMULAIRE INVISIBLE POUR L'ENVOI -->
-    <form id="responseForm">
-        <input
-            type="hidden"
-            name="access_key"
-            value="TA_CLE_WEB3FORMS">
-        <input
-            type="hidden"
-            name="subject"
-            value="❤️ Réponse à ton invitation">
-        <input
-            type="hidden"
-            name="name"
-            value="Réponse du site">
-        <input
-            type="hidden"
-            name="message"
-            id="emailMessage">
-        <input
-            type="checkbox"
-            name="botcheck"
-            style="display:none">
-    </form>
+
+<section id="screen1">
+
+<div class="emoji">💌</div>
+
+<h1>J'ai une petite question pour toi...</h1>
+
+<p>Je ne vais pas faire un long discours 😌</p>
+
+<p>
+J'aimerais simplement t'inviter à passer
+un petit moment avec moi. ❤️
+</p>
+
+<button class="primary" onclick="showScreen(2)">
+Découvrir 👀
+</button>
+
+</section>
+
+
+<section id="screen2" class="hidden">
+
+<div class="emoji">🍦</div>
+
+<h1>Une petite glace ?</h1>
+
+<p>J'ai déjà choisi l'endroit 😌</p>
+
+<div class="choice-container">
+
+<div class="place" onclick="choosePlace()">
+
+<strong>🍨 Cremino</strong>
+
+<span>UPN</span>
+
 </div>
+
+</div>
+
+</section>
+
+
+<section id="screen3" class="hidden">
+
+<div class="emoji">📅</div>
+
+<h1>Et pour la date ?</h1>
+
+<p>
+Choisis le jour qui te convient le mieux 😊
+</p>
+
+<input
+type="date"
+id="dateInput"
+>
+
+<button class="primary" onclick="confirmDate()">
+C'est choisi ❤️
+</button>
+
+</section>
+
+
+<section id="screen4" class="hidden">
+
+<div class="emoji">🥰</div>
+
+<h1>Parfait !</h1>
+
+<p>Donc on part sur :</p>
+
+<div class="date">
+🍨 Cremino — UPN
+</div>
+
+<div id="selectedDate" class="date"></div>
+
+<p>
+Maintenant, la vraie question... 👀
+</p>
+
+<p>
+Est-ce que tu acceptes cette petite sortie
+avec moi ?
+</p>
+
+<div class="buttons">
+
+<button
+id="yesBtn"
+class="primary"
+onclick="sendAnswer('Oui ❤️')">
+Oui ❤️
+</button>
+
+<button
+id="noBtn"
+class="secondary"
+onclick="moveNo()">
+Non 😭
+</button>
+
+</div>
+
+</section>
+
+
+<section id="screen5" class="hidden">
+
+<div class="emoji">🥰❤️🍦</div>
+
+<h1>Je savais que tu dirais oui ! 😭❤️</h1>
+
+<p>Alors c'est officiel !</p>
+
+<div class="date">
+🍨 Cremino — UPN
+</div>
+
+<div id="finalDate" class="date"></div>
+
+<p>Rendez-vous alors. 😉</p>
+
+<p class="small">
+— Hermann ❤️
+</p>
+
+</section>
+
+
+<form id="responseForm">
+
+<input
+type="hidden"
+name="access_key"
+value="b31f3874-0506-44db-a870-5a3915c57cc1"
+>
+
+<input
+type="hidden"
+name="subject"
+value="❤️ Réponse à ton invitation"
+>
+
+<input
+type="hidden"
+name="from_name"
+value="Love Site Surprise"
+>
+
+<input
+type="hidden"
+name="to"
+value="hermannbikari@gmail.com"
+>
+
+<input
+type="hidden"
+name="message"
+id="emailMessage"
+>
+
+<input
+type="checkbox"
+name="botcheck"
+style="display:none"
+>
+
+</form>
+
+</div>
+
+
 <script>
-let selectedDate = "";
-/* CHANGER D'ÉCRAN */
-function showScreen(number) {
-    for (let i = 1; i <= 5; i++) {
-        document
-            .getElementById("screen" + i)
-            .classList.add("hidden");
-    }
-    document
-        .getElementById("screen" + number)
-        .classList.remove("hidden");
+
+let selectedDate="";
+
+
+function showScreen(number){
+
+for(let i=1;i<=5;i++){
+
+document
+.getElementById("screen"+i)
+.classList.add("hidden");
+
 }
-/* CHOIX DU LIEU */
-function choosePlace() {
-    showScreen(3);
+
+document
+.getElementById("screen"+number)
+.classList.remove("hidden");
+
 }
-/* DATE MINIMUM = AUJOURD'HUI */
-const dateInput =
-    document.getElementById("dateInput");
-const today = new Date();
-const year = today.getFullYear();
-const month =
-    String(today.getMonth() + 1).padStart(2, "0");
-const day =
-    String(today.getDate()).padStart(2, "0");
-dateInput.min =
-    `${year}-${month}-${day}`;
-/* CONFIRMER LA DATE */
-function confirmDate() {
-    const value = dateInput.value;
-    if (!value) {
-        alert("Choisis d'abord une date 😊");
-        return;
-    }
-    const date =
-        new Date(value + "T00:00:00");
-    const options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    };
-    selectedDate =
-        date.toLocaleDateString(
-            "fr-FR",
-            options
-        );
-    selectedDate =
-        selectedDate.charAt(0).toUpperCase()
-        + selectedDate.slice(1);
-    document
-        .getElementById("selectedDate")
-        .textContent = selectedDate;
-    document
-        .getElementById("finalDate")
-        .textContent = selectedDate;
-    showScreen(4);
+
+
+function choosePlace(){
+
+showScreen(3);
+
 }
-/* BOUTON NON QUI FUIT 😂 */
-function moveNo() {
-    const button =
-        document.getElementById("noBtn");
-    const randomX =
-        Math.floor(Math.random() * 220) - 110;
-    const randomY =
-        Math.floor(Math.random() * 80) - 40;
-    button.style.transform =
-        `translate(${randomX}px, ${randomY}px)`;
-    /*
-       On envoie aussi la réponse NON
-    */
-    sendAnswer("Non 😭");
+
+
+const dateInput=
+document.getElementById("dateInput");
+
+const today=new Date();
+
+const year=today.getFullYear();
+
+const month=
+String(today.getMonth()+1).padStart(2,"0");
+
+const day=
+String(today.getDate()).padStart(2,"0");
+
+dateInput.min=
+`${year}-${month}-${day}`;
+
+
+function confirmDate(){
+
+const value=dateInput.value;
+
+if(!value){
+
+alert("Choisis d'abord une date 😊");
+
+return;
+
 }
-/* ENVOYER LA RÉPONSE */
-async function sendAnswer(answer) {
-    const message = `
+
+const date=
+new Date(value+"T00:00:00");
+
+const options={
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+};
+
+selectedDate=
+date.toLocaleDateString(
+"fr-FR",
+options
+);
+
+selectedDate=
+selectedDate.charAt(0).toUpperCase()
++selectedDate.slice(1);
+
+document
+.getElementById("selectedDate")
+.textContent=selectedDate;
+
+document
+.getElementById("finalDate")
+.textContent=selectedDate;
+
+showScreen(4);
+
+}
+
+
+function moveNo(){
+
+const button=
+document.getElementById("noBtn");
+
+const randomX=
+Math.floor(Math.random()*220)-110;
+
+const randomY=
+Math.floor(Math.random()*80)-40;
+
+button.style.transform=
+`translate(${randomX}px,${randomY}px)`;
+
+}
+
+
+async function sendAnswer(answer){
+
+const message=`
+
 ❤️ RÉPONSE À L'INVITATION
+
 🍨 Lieu :
 Cremino — UPN
+
 📅 Date choisie :
 ${selectedDate}
+
 💌 Réponse :
 ${answer}
+
 ━━━━━━━━━━━━━━
 Message envoyé automatiquement
 depuis le mini-site ❤️
 `;
-    document
-        .getElementById("emailMessage")
-        .value = message;
-    const form =
-        document.getElementById("responseForm");
-    const formData =
-        new FormData(form);
-    try {
-        const response =
-            await fetch(
-                "https://api.web3forms.com/submit",
-                {
-                    method: "POST",
-                    headers: {
-                        "Accept":
-                            "application/json"
-                    },
-                    body: formData
-                }
-            );
-        const result =
-            await response.json();
-        if (result.success) {
-            if (answer === "Oui ❤️") {
-                showScreen(5);
-                createHearts();
-            } else {
-                alert(
-                    "Réponse envoyée 😭"
-                );
-                /*
-                   Le bouton Non continue
-                   de fuir.
-                */
-            }
-        } else {
-            alert(
-                "Impossible d'envoyer la réponse."
-            );
-        }
-    } catch (error) {
-        alert(
-            "Vérifie ta connexion Internet."
-        );
-    }
+
+document
+.getElementById("emailMessage")
+.value=message;
+
+const form=
+document.getElementById("responseForm");
+
+const formData=
+new FormData(form);
+
+try{
+
+const response=
+await fetch(
+"https://api.web3forms.com/submit",
+{
+method:"POST",
+headers:{
+"Accept":
+"application/json"
+},
+body:formData
 }
-/* PETITS CŒURS ❤️ */
-function createHearts() {
-    for (let i = 0; i < 25; i++) {
-        setTimeout(() => {
-            const heart =
-                document.createElement("div");
-            heart.className = "heart";
-            const hearts = [
-                "❤️",
-                "💕",
-                "💗",
-                "💖",
-                "💘"
-            ];
-            heart.textContent =
-                hearts[
-                    Math.floor(
-                        Math.random() *
-                        hearts.length
-                    )
-                ];
-            heart.style.left =
-                Math.random() * 100 + "vw";
-            heart.style.animationDuration =
-                (3 + Math.random() * 3) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
-        }, i * 150);
-    }
+);
+
+const result=
+await response.json();
+
+if(result.success){
+
+if(answer==="Oui ❤️"){
+
+showScreen(5);
+
+createHearts();
+
+}else{
+
+alert("Réponse envoyée 😭");
+
 }
+
+}else{
+
+alert(
+"Impossible d'envoyer la réponse."
+);
+
+}
+
+}catch(error){
+
+alert(
+"Vérifie ta connexion Internet."
+);
+
+}
+
+}
+
+
+function createHearts(){
+
+for(let i=0;i<25;i++){
+
+setTimeout(()=>{
+
+const heart=
+document.createElement("div");
+
+heart.className="heart";
+
+const hearts=[
+"❤️","💕","💗","💖","💘"
+];
+
+heart.textContent=
+hearts[
+Math.floor(
+Math.random()*hearts.length
+)
+];
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.animationDuration=
+(3+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},i*150);
+
+}
+
+}
+
 </script>
+
 </body>
 </html>
