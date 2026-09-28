@@ -1,74 +1,107 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LoveLink — Une surprise, un lien, un souvenir.</title>
-<meta name="description" content="LoveLink crée des invitations digitales personnalisées, élégantes et interactives.">
-<style>
-:root{--ink:#17131a;--muted:#6f6872;--pink:#e94f83;--rose:#fff1f6;--line:#eadfe5;--white:#fff;--dark:#211a22}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}a{text-decoration:none;color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}
-nav{height:76px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:25px;letter-spacing:-1px}.logo span{color:var(--pink)}.navlinks{display:flex;gap:28px;color:#554e57;font-size:14px}.navcta{background:var(--dark);color:#fff;padding:11px 17px;border-radius:999px;font-weight:700;font-size:14px}
-.hero{padding:72px 0 85px;background:radial-gradient(circle at 80% 15%,#ffdce9 0,transparent 30%),linear-gradient(180deg,#fff 0,#fff8fb 100%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:65px;align-items:center}.eyebrow{display:inline-flex;padding:8px 12px;border:1px solid #f0ccd9;border-radius:999px;background:#fff;color:#b82f61;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(45px,6vw,72px);line-height:.98;letter-spacing:-4px;margin:18px 0}.hero h1 em{font-style:normal;color:var(--pink)}.hero p{font-size:18px;line-height:1.7;color:var(--muted);max-width:590px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:15px 22px;border-radius:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}.btn-main{background:var(--pink);color:#fff;box-shadow:0 12px 30px #e94f8333}.btn-light{border:1px solid var(--line);background:#fff}.hero-note{font-size:12px!important;margin-top:16px}
-.phone{max-width:350px;margin:auto;background:#17131a;border-radius:34px;padding:11px;box-shadow:0 28px 70px #3a203022}.screen{background:linear-gradient(145deg,#fff0f6,#fff);border-radius:25px;min-height:560px;padding:25px;display:flex;flex-direction:column;justify-content:center;text-align:center}.screen .heart{font-size:52px}.screen h2{font-size:30px;margin:15px 0 8px}.screen p{font-size:15px}.mockbtn{background:var(--pink);color:#fff;padding:13px;border-radius:12px;font-weight:800;margin-top:15px}
-section{padding:90px 0}.center{text-align:center}.kicker{color:var(--pink);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.title{font-size:42px;letter-spacing:-2px;margin:10px 0}.sub{color:var(--muted);max-width:650px;margin:0 auto;line-height:1.7}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px}.card{border:1px solid var(--line);border-radius:22px;padding:25px;background:#fff;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 18px 45px #2816220d}.icon{font-size:30px}.card h3{margin:18px 0 8px}.card p{color:var(--muted);font-size:14px;line-height:1.6}
-.how{background:#fff8fb}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}.step{background:#fff;border-radius:22px;padding:28px;border:1px solid #f0e2e8}.num{width:35px;height:35px;border-radius:50%;background:var(--rose);color:var(--pink);display:grid;place-items:center;font-weight:900}
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:42px auto 0}.price{border:1px solid var(--line);border-radius:24px;padding:30px;background:#fff}.price.featured{border:2px solid var(--pink);position:relative;box-shadow:0 18px 50px #e94f8315}.badge{position:absolute;top:-13px;right:20px;background:var(--pink);color:#fff;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:900}.price h3{margin:0}.amount{font-size:40px;font-weight:900;margin:15px 0}.price ul{padding-left:20px;color:var(--muted);line-height:2}
-.cta{background:var(--dark);color:#fff;border-radius:32px;padding:65px;text-align:center}.cta h2{font-size:44px;letter-spacing:-2px;margin:8px}.cta p{color:#d5ccd4;line-height:1.7}.cta .btn{margin-top:18px}
-footer{padding:30px 0;color:#817982;font-size:13px;display:flex;justify-content:space-between}
-@media(max-width:800px){.navlinks{display:none}.hero{padding-top:40px}.hero-grid{grid-template-columns:1fr;gap:45px}.hero h1{letter-spacing:-2.5px}.cards{grid-template-columns:1fr 1fr}.steps,.pricing{grid-template-columns:1fr}.cta{padding:45px 25px}.cta h2,.title{font-size:34px}footer{flex-direction:column;gap:8px}}
-</style>
-</head>
-<body>
-<header>
-<div class="wrap"><nav>
-<a class="logo" href="#">Love<span>Link</span> ♥</a>
-<div class="navlinks"><a href="#modeles">Modèles</a><a href="#comment">Comment ça marche</a><a href="#tarifs">Tarifs</a></div>
-<a class="navcta" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20voudrais%20cr%C3%A9er%20une%20invitation.">Créer ma surprise</a>
-</nav></div>
-</header>
+<div class="lovelink-builder" style="background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; margin: 20px auto; font-family: sans-serif;">
+    <h3 style="color: #e91e63; text-align: center;">💕 Crée son Expérience à Kinshasa</h3>
+    
+    <!-- 1. Choix de la Date -->
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">📅 Choisis la date du rendez-vous :</label>
+        <input type="date" id="rdvDate" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+    </div>
 
-<main>
-<section class="hero"><div class="wrap hero-grid">
-<div>
-<div class="eyebrow">Invitations digitales personnalisées</div>
-<h1>Une surprise.<br><em>Un lien.</em><br>Un souvenir.</h1>
-<p>LoveLink transforme une simple invitation en une petite expérience digitale, élégante, personnelle et faite pour être partagée.</p>
-<div class="actions"><a class="btn btn-main" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20veux%20cr%C3%A9er%20une%20invitation.">Créer ma LoveLink →</a><a class="btn btn-light" href="#modeles">Voir les modèles</a></div>
-<p class="hero-note">Commande simple · Personnalisation · Lien partageable sur WhatsApp</p>
+    <!-- 2. Choix de l'Activité Principale -->
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">🎯 Qu'est-ce qu'on fait ?</label>
+        <select id="mainActivity" onchange="updateSubOptions()" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+            <option value="">-- Sélectionne une activité --</option>
+            <option value="Resto">🍽️ Restaurant / Manger</option>
+            <option value="Glace">🍦 Glace & Douceur</option>
+            <option value="Ciné">🎬 Cinéma / Divertissement</option>
+        </select>
+    </div>
+
+    <!-- 3. Sous-menu dynamique selon Kinshasa -->
+    <div style="margin-bottom: 20px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;" id="subLabel">✨ Option spécifique :</label>
+        <select id="subOption" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+            <option value="">-- Choisis d'abord une activité --</option>
+        </select>
+    </div>
+
+    <!-- Bouton d'envoi WhatsApp -->
+    <button onclick="sendToWhatsApp()" style="background: #25D366; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;">
+        📱 Envoyer ma configuration sur ton WhatsApp
+    </button>
 </div>
-<div class="phone"><div class="screen"><div class="heart">💌</div><h2>Tu as reçu une surprise...</h2><p>Quelqu'un aimerait partager un joli moment avec toi. ❤️</p><div class="mockbtn">Découvrir l'invitation</div><p style="font-size:12px;color:#888">Un exemple LoveLink</p></div></div>
-</div></section>
 
-<section id="modeles"><div class="wrap">
-<div class="center"><div class="kicker">Nos expériences</div><h2 class="title">Une occasion. Une expérience.</h2><p class="sub">Des invitations pensées pour les moments qui méritent un peu plus que deux lignes sur WhatsApp.</p></div>
-<div class="cards">
-<div class="card"><div class="icon">❤️</div><h3>Rendez-vous</h3><p>Une invitation romantique avec lieu, date, heure et réponse interactive.</p></div>
-<div class="card"><div class="icon">🎂</div><h3>Anniversaire</h3><p>Un message personnalisé pour créer une vraie surprise avant le grand jour.</p></div>
-<div class="card"><div class="icon">💍</div><h3>Déclaration</h3><p>Une page pensée pour dire quelque chose d'important autrement.</p></div>
-<div class="card"><div class="icon">🎉</div><h3>Événement</h3><p>Une invitation digitale moderne pour une fête ou un moment spécial.</p></div>
-</div></div></section>
+<script>
+// Les options adaptées à Kinshasa
+function updateSubOptions() {
+    const main = document.getElementById("mainActivity").value;
+    const subSelect = document.getElementById("subOption");
+    const subLabel = document.getElementById("subLabel");
+    
+    subSelect.innerHTML = ""; // Vider les anciennes options
+    
+    if (main === "Resto") {
+        subLabel.innerText = "🍽️ Choisis le style de repas :";
+        const options = ["Tacos", "Chawarma", "Poulet frit", "Pizza", "Foufou / Liboke (Traditionnel)"];
+        options.forEach(opt => {
+            let el = document.createElement("option");
+            el.value = opt;
+            el.textContent = opt;
+            subSelect.appendChild(el);
+        });
+    } else if (main === "Glace") {
+        subLabel.innerText = "🍦 Choisis le glacier à Kinshasa :";
+        // Glaciers locaux actualisés
+        const options = [
+            "Cremino (UPN)", 
+            "Nice Cream (Ma Campagne / Bandal)", 
+            "Glace & Chocolat (Gombe)", 
+            "Caramel (Gombe)", 
+            "Kis Sweet (Ngaliema)", 
+            "Planet Ice (Limete)"
+        ];
+        options.forEach(opt => {
+            let el = document.createElement("option");
+            el.value = opt;
+            el.textContent = opt;
+            subSelect.appendChild(el);
+        });
+    } else if (main === "Ciné") {
+        subLabel.innerText = "🎬 Choisis l'activité :";
+        const options = ["Séance de Cinéma (Cinekin / Wallonie)", "Balade / Détente au Jardin Botanique (Gombe)", "Jeux / Bowling"];
+        options.forEach(opt => {
+            let el = document.createElement("option");
+            el.value = opt;
+            el.textContent = opt;
+            subSelect.appendChild(el);
+        });
+    } else {
+        subLabel.innerText = "✨ Option spécifique :";
+        let el = document.createElement("option");
+        el.value = "";
+        el.textContent = "-- Choisis d'abord une activité --";
+        subSelect.appendChild(el);
+    }
+}
 
-<section id="comment" class="how"><div class="wrap">
-<div class="center"><div class="kicker">Simple et rapide</div><h2 class="title">De l'idée au lien.</h2><p class="sub">Tu nous donnes les détails. LoveLink s'occupe de transformer ton idée en invitation.</p></div>
-<div class="steps">
-<div class="step"><div class="num">1</div><h3>Tu choisis</h3><p>Le type d'invitation et la formule qui te correspondent.</p></div>
-<div class="step"><div class="num">2</div><h3>Tu personnalises</h3><p>Nom, message, photos, lieu, date, heure et détails de ton choix.</p></div>
-<div class="step"><div class="num">3</div><h3>Tu partages</h3><p>Tu reçois ton lien et tu l'envoies directement à la personne.</p></div>
-</div></div></section>
-
-<section id="tarifs"><div class="wrap">
-<div class="center"><div class="kicker">Tarifs de lancement</div><h2 class="title">Choisis ton expérience.</h2><p class="sub">Des formules simples pour commencer. Le contenu peut être adapté à chaque commande.</p></div>
-<div class="pricing">
-<div class="price"><h3>Basic</h3><div class="amount">5 $</div><ul><li>Invitation personnalisée</li><li>Lien partageable</li><li>Nom et message</li></ul><a class="btn btn-light" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20choisis%20la%20formule%20Basic%20%C3%A0%205%24.">Commander</a></div>
-<div class="price featured"><span class="badge">POPULAIRE</span><h3>Premium</h3><div class="amount">10 $</div><ul><li>Tout le Basic</li><li>Animations</li><li>Photos et musique</li><li>Interactions</li></ul><a class="btn btn-main" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20choisis%20la%20formule%20Premium%20%C3%A0%2010%24.">Commander</a></div>
-<div class="price"><h3>VIP</h3><div class="amount">15 $</div><ul><li>Tout le Premium</li><li>Réponse interactive</li><li>Notification par e-mail</li><li>Expérience complète</li></ul><a class="btn btn-light" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20choisis%20la%20formule%20VIP%20%C3%A0%2015%24.">Commander</a></div>
-</div></div></section>
-
-<section><div class="wrap"><div class="cta"><div class="kicker" style="color:#ff9fbd">LoveLink</div><h2>Prêt à créer une surprise ?</h2><p>Explique-nous simplement ce que tu imagines. Nous transformons ton idée en une invitation que tu pourras partager en un seul lien.</p><a class="btn btn-main" href="https://wa.me/243828373914?text=Bonjour%20LoveLink%20%F0%9F%92%95%20Je%20veux%20cr%C3%A9er%20ma%20surprise.">Parler à LoveLink sur WhatsApp →</a></div></div></section>
-</main>
-
-<footer class="wrap"><span>© 2026 LoveLink</span><span>Une surprise, un lien, un souvenir. ♥</span></footer>
-</body>
-</html>
+// Fonction pour envoyer le tout vers ton WhatsApp
+function sendToWhatsApp() {
+    const date = document.getElementById("rdvDate").value;
+    const activity = document.getElementById("mainActivity").value;
+    const sub = document.getElementById("subOption").value;
+    
+    if(!date || !activity || !sub) {
+        alert("S'il te plaît, remplis tous les champs avant d'envoyer !");
+        return;
+    }
+    
+    // Ton numéro WhatsApp professionnel configuré
+    const tonNumero = "243998622741"; 
+    
+    const message = `Hello LoveLink ! Je veux commander une expérience pour ma copine :\n📅 Date : ${date}\n🎯 Activité : ${activity}\n📍 Option choisie : ${sub}`;
+    
+    const url = `https://wa.me/${tonNumero}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+</script>
