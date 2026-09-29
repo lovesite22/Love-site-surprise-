@@ -3,318 +3,1056 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour Philomenn Divine ❤️</title>
+
+<title>LoveLink ❤️ Philomenn Divine</title>
+
 <style>
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: white;
   text-align: center;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
+
 .container {
   width: 92%;
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
-  padding: 30px 15px 50px;
+  padding: 35px 15px 60px;
 }
+
+.screen {
+  display: none;
+  animation: appear .5s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .heart {
-  font-size: 60px;
+  font-size: 65px;
   animation: beat 1s infinite;
 }
+
 @keyframes beat {
   50% {
     transform: scale(1.15);
   }
 }
+
 h1 {
-  margin-bottom: 5px;
   font-size: 30px;
+  margin: 10px 0;
 }
-.subtitle {
+
+h2 {
+  font-size: 24px;
+}
+
+p {
   font-size: 17px;
-  margin-bottom: 20px;
+  line-height: 1.5;
 }
+
 .message {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 25px 0;
 }
+
+.card {
+  background: rgba(255,255,255,.17);
+  border-radius: 24px;
+  padding: 22px;
+  margin: 20px 0;
+  backdrop-filter: blur(8px);
+}
+
 .date {
-  background: rgba(255,255,255,0.18);
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.8;
+}
+
+.instruction {
+  font-weight: bold;
+  background: rgba(255,255,255,.2);
   padding: 15px;
   border-radius: 18px;
-  margin-bottom: 25px;
+  margin: 20px 0;
 }
-.instruction {
-  background: rgba(255,255,255,0.18);
-  padding: 16px;
-  border-radius: 18px;
-  margin-bottom: 18px;
-  font-weight: bold;
-}
+
 .activities {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 13px;
 }
-.activity {
-  background: white;
-  color: #e91e63;
-  padding: 20px 10px;
-  border-radius: 18px;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.activity:hover,
-.activity.selected {
-  transform: scale(1.04);
-  background: #ffe4ed;
-}
-.activity span {
-  display: block;
-  font-size: 35px;
-  margin-bottom: 8px;
-}
-.subactivities {
-  display: none;
-  margin-top: 25px;
-  background: rgba(255,255,255,0.16);
-  padding: 20px;
-  border-radius: 20px;
-}
-.subactivities h2 {
-  margin-top: 0;
-}
+
+.activity,
 .option {
   background: white;
   color: #e91e63;
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 14px;
-  cursor: pointer;
+  border-radius: 18px;
+  padding: 17px 10px;
   font-weight: bold;
-  transition: 0.2s;
+  cursor: pointer;
+  transition: .2s;
 }
+
+.activity:hover,
+.activity.selected,
+.option:hover,
 .option.selected {
-  background: #ffd6e3;
-  transform: scale(1.02);
+  background: #ffe1eb;
+  transform: scale(1.03);
 }
-.confirm {
-  display: none;
+
+.activity span {
+  display: block;
+  font-size: 35px;
+  margin-bottom: 7px;
+}
+
+.section-title {
   margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: bold;
 }
+
+.options-list {
+  display: grid;
+  gap: 10px;
+}
+
+.option {
+  font-size: 16px;
+}
+
 button {
   border: none;
-  padding: 16px 25px;
   border-radius: 30px;
+  padding: 16px 28px;
+  margin-top: 20px;
   background: white;
   color: #e91e63;
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
 }
-.note {
-  font-size: 13px;
-  opacity: 0.9;
-  margin-top: 20px;
+
+button:hover {
+  transform: scale(1.04);
 }
+
+.back {
+  background: rgba(255,255,255,.18);
+  color: white;
+  margin-right: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.summary {
+  text-align: left;
+  background: rgba(255,255,255,.18);
+  padding: 20px;
+  border-radius: 20px;
+  line-height: 1.8;
+}
+
+.progress {
+  font-size: 13px;
+  opacity: .85;
+  margin-bottom: 15px;
+}
+
+.small {
+  font-size: 14px;
+  opacity: .85;
+}
+
+.hearts {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 </style>
 </head>
+
 <body>
+
 <div class="container">
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 1 : ACCUEIL -->
+<!-- ================================================= -->
+
+<section id="step1" class="screen active">
+
   <div class="heart">❤️</div>
+
   <h1>Philomenn Divine</h1>
-  <div class="subtitle">
-    Une petite surprise de la part de Hermann ❤️
-  </div>
+
+  <p>
+    Hermann t'a préparé une petite surprise...
+  </p>
+
   <div class="message">
-    « Je t'aime » 💕
+    « Je t'aime » ❤️
   </div>
-  <div class="date">
-    📅 <strong>30 septembre 2026</strong><br>
-    🕛 <strong>12h10</strong>
+
+  <div class="card">
+    <p>
+      Une petite aventure à deux t'attend.
+      <br>
+      Prête à découvrir ce qu'il t'a préparé ? 🥰
+    </p>
   </div>
+
+  <button onclick="nextStep(2)">
+    💕 Commencer la surprise
+  </button>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 2 : DATE -->
+<!-- ================================================= -->
+
+<section id="step2" class="screen">
+
+  <div class="progress">
+    Étape 2 sur 6 ❤️
+  </div>
+
+  <div class="heart">💕</div>
+
+  <h2>Votre petit rendez-vous</h2>
+
+  <p>
+    Hermann a déjà choisi un moment rien que pour vous...
+  </p>
+
+  <div class="card date">
+
+    📅 30 septembre 2026
+    <br>
+
+    🕛 12h10
+
+  </div>
+
+  <p>
+    Maintenant, à toi de choisir
+    comment vous allez passer ce joli moment. 🥰
+  </p>
+
+  <button onclick="nextStep(3)">
+    Continuer ❤️
+  </button>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 3 : ACTIVITÉ -->
+<!-- ================================================= -->
+
+<section id="step3" class="screen">
+
+  <div class="progress">
+    Étape 3 sur 6 ❤️
+  </div>
+
+  <h2>Un moment à deux 💕</h2>
+
   <div class="instruction">
-    💕 Choisis UNE activité parmi les 4 proposées
+    Choisis UNE activité parmi les 4 proposées ❤️
   </div>
+
   <div class="activities">
-    <div class="activity" onclick="selectActivity('Restaurant', this)">
+
+    <div
+      class="activity"
+      onclick="chooseActivity('Restaurant', this)"
+    >
       <span>🍽️</span>
       Restaurant
     </div>
-    <div class="activity" onclick="selectActivity('Crémerie', this)">
+
+    <div
+      class="activity"
+      onclick="chooseActivity('Crémerie', this)"
+    >
       <span>🍦</span>
       Crémerie
     </div>
-    <div class="activity" onclick="selectActivity('Cinéma', this)">
+
+    <div
+      class="activity"
+      onclick="chooseActivity('Cinéma', this)"
+    >
       <span>🎬</span>
       Cinéma
     </div>
-    <div class="activity" onclick="selectActivity('Picnic', this)">
+
+    <div
+      class="activity"
+      onclick="chooseActivity('Picnic', this)"
+    >
       <span>🧺</span>
       Picnic
     </div>
+
   </div>
-  <div id="subactivities" class="subactivities">
-    <h2 id="subTitle"></h2>
+
+  <button id="activityNext"
+          class="hidden"
+          onclick="nextStep(4)">
+    Continuer ❤️
+  </button>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 4 : SOUS-ACTIVITÉS -->
+<!-- ================================================= -->
+
+<section id="step4" class="screen">
+
+  <div class="progress">
+    Étape 4 sur 6 ❤️
+  </div>
+
+  <h2 id="subTitle">
+    Fais ton choix 🥰
+  </h2>
+
+  <div id="restaurantOptions" class="hidden">
+
+    <div class="section-title">
+      🍽️ Choisis ton repas
+    </div>
+
+    <div class="options-list">
+
+      <div class="option"
+           onclick="chooseFood('🌮 Tacos', this)">
+        🌮 Tacos
+      </div>
+
+      <div class="option"
+           onclick="chooseFood('🥙 Chawarma', this)">
+        🥙 Chawarma
+      </div>
+
+    </div>
+
+
+    <div class="section-title">
+      🥤 Choisis ta boisson
+    </div>
+
+    <div class="options-list">
+
+      <div class="option"
+           onclick="chooseDrink('🥤 Coca', this)">
+        🥤 Coca
+      </div>
+
+      <div class="option"
+           onclick="chooseDrink('🥤 Fanta', this)">
+        🥤 Fanta
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div id="cremerieOptions" class="hidden">
+
+    <div class="section-title">
+      🍦 Choisis ta glace
+    </div>
+
+    <div class="options-list">
+
+      <div class="option"
+           onclick="chooseSingleOption('🍦 Cremino UPN', this)">
+        🍦 Cremino UPN
+      </div>
+
+      <div class="option"
+           onclick="chooseSingleOption('🍦 Nice Cream Macampagne', this)">
+        🍦 Nice Cream Macampagne
+      </div>
+
+      <div class="option"
+           onclick="chooseSingleOption('🍦 Nice Cream Bandal', this)">
+        🍦 Nice Cream Bandal
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div id="cinemaOptions" class="hidden">
+
+    <div class="section-title">
+      🎬 Quel cinéma ?
+    </div>
+
+    <div class="options-list">
+
+      <div class="option"
+           onclick="chooseSingleOption('🎬 Cinéma privé', this)">
+        🎬 Cinéma privé
+      </div>
+
+      <div class="option"
+           onclick="chooseSingleOption('🎬 Cinéma public', this)">
+        🎬 Cinéma public
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div id="picnicOptions" class="hidden">
+
+    <div class="section-title">
+      🧺 Votre moment picnic
+    </div>
+
+    <div class="options-list">
+
+      <div class="option"
+           onclick="chooseSingleOption('🧺 Picnic romantique', this)">
+        🧺 Picnic romantique
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    id="subNext"
+    class="hidden"
+    onclick="nextStep(5)"
+  >
+    Voir notre petit programme ❤️
+  </button>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 5 : RÉCAPITULATIF -->
+<!-- ================================================= -->
+
+<section id="step5" class="screen">
+
+  <div class="progress">
+    Étape 5 sur 6 ❤️
+  </div>
+
+  <div class="heart">🥰</div>
+
+  <h2>Votre petit programme</h2>
+
+  <p>
+    Voilà ce que tu as choisi pour votre moment à deux :
+  </p>
+
+  <div id="summary" class="summary">
+  </div>
+
+  <button onclick="nextStep(6)">
+    C'est parfait ❤️
+  </button>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- ÉTAPE 6 : CONFIRMATION -->
+<!-- ================================================= -->
+
+<section id="step6" class="screen">
+
+  <div class="heart">❤️</div>
+
+  <h2>Alors Philomenn...</h2>
+
+  <div class="card">
+
     <p>
-      Choisis maintenant ton option ❤️
+      Est-ce que tu confirmes ce joli programme
+      avec Hermann ? 🥰
     </p>
-    <div id="options"></div>
+
+    <p class="message">
+      ❤️ Oui, je veux !
+    </p>
+
   </div>
-  <div id="confirm" class="confirm">
-    <button onclick="sendResponse()">
-      ❤️ Confirmer mon choix
-    </button>
-  </div>
-  <div class="note">
-    Ton choix sera envoyé directement à Hermann ❤️
-  </div>
+
+  <button onclick="sendToClient()">
+    ❤️ Confirmer mon choix
+  </button>
+
+  <p class="small">
+    Ton choix sera envoyé directement à Hermann.
+  </p>
+
+</section>
+
+
 </div>
+
+
+
 <script>
+
 /*
-==================================================
+====================================================
 INFORMATIONS DE LA COMMANDE
-==================================================
+====================================================
 */
-// Numéro WhatsApp DU CLIENT.
-// Pour une autre commande, remplace seulement ce numéro.
+
 const numeroClient = "243828373914";
+
 const nomClient = "Hermann";
+
 const nomPartenaire = "Philomenn Divine";
+
 const dateRendezVous = "30 septembre 2026 à 12h10";
+
 const messageAmour = "Je t'aime";
+
+
 /*
-==================================================
+====================================================
 VARIABLES
-==================================================
+====================================================
 */
-let selectedActivity = "";
-let selectedOption = "";
+
+let activity = "";
+
+let food = "";
+
+let drink = "";
+
+let singleOption = "";
+
+
 /*
-==================================================
-CHOIX DE L'ACTIVITÉ
-==================================================
+====================================================
+NAVIGATION
+====================================================
 */
-function selectActivity(activity, element) {
-  selectedActivity = activity;
-  selectedOption = "";
+
+function nextStep(number) {
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen => {
+      screen.classList.remove("active");
+    });
+
+  document
+    .getElementById("step" + number)
+    .classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+
+/*
+====================================================
+CHOIX ACTIVITÉ
+====================================================
+*/
+
+function chooseActivity(name, element) {
+
+  activity = name;
+
+  food = "";
+
+  drink = "";
+
+  singleOption = "";
+
+
   document
     .querySelectorAll(".activity")
     .forEach(item => {
       item.classList.remove("selected");
     });
+
+
   element.classList.add("selected");
-  const box = document.getElementById("subactivities");
-  const title = document.getElementById("subTitle");
-  const options = document.getElementById("options");
-  box.style.display = "block";
-  title.innerHTML =
-    "💕 " + activity + " 💕";
-  options.innerHTML = "";
-  document.getElementById("confirm").style.display = "none";
-  /*
-  ================================
-  RESTAURANT
-  ================================
-  */
-  if (activity === "Restaurant") {
-    addOption("🌮 Tacos");
-    addOption("🥙 Chawarma");
-    addOption("🥤 Coca");
-    addOption("🥤 Fanta");
-  }
-  /*
-  ================================
-  CRÉMERIE
-  ================================
-  */
-  if (activity === "Crémerie") {
-    addOption("🍦 Cremino UPN");
-    addOption("🍦 Nice Cream Macampagne");
-    addOption("🍦 Nice Cream Bandal");
-  }
-  /*
-  ================================
-  CINÉMA
-  ================================
-  */
-  if (activity === "Cinéma") {
-    addOption("🎬 Cinéma privé");
-    addOption("🎬 Cinéma public");
-  }
-  /*
-  ================================
-  PICNIC
-  ================================
-  */
-  if (activity === "Picnic") {
-    addOption("🧺 Picnic romantique");
-  }
-}
-/*
-==================================================
-AJOUTER UNE SOUS-ACTIVITÉ
-==================================================
-*/
-function addOption(text) {
-  const div = document.createElement("div");
-  div.className = "option";
-  div.innerHTML = text;
-  div.onclick = function() {
-    document
-      .querySelectorAll(".option")
-      .forEach(item => {
-        item.classList.remove("selected");
-      });
-    div.classList.add("selected");
-    selectedOption = text;
-    document.getElementById("confirm").style.display = "block";
-  };
+
+
   document
-    .getElementById("options")
-    .appendChild(div);
+    .getElementById("activityNext")
+    .classList.remove("hidden");
+
 }
+
+
+
 /*
-==================================================
-ENVOYER LA RÉPONSE AU CLIENT
-==================================================
+====================================================
+PRÉPARER ÉTAPE 4
+====================================================
 */
-function sendResponse() {
-  if (!selectedActivity || !selectedOption) {
-    alert(
-      "Choisis d'abord une activité et une option ❤️"
-    );
-    return;
+
+document
+  .getElementById("step4")
+  .addEventListener("transitionstart", showOptions);
+
+
+/*
+====================================================
+AFFICHER LES SOUS-ACTIVITÉS
+====================================================
+*/
+
+function showOptions() {
+
+  document
+    .getElementById("restaurantOptions")
+    .classList.add("hidden");
+
+  document
+    .getElementById("cremerieOptions")
+    .classList.add("hidden");
+
+  document
+    .getElementById("cinemaOptions")
+    .classList.add("hidden");
+
+  document
+    .getElementById("picnicOptions")
+    .classList.add("hidden");
+
+
+  if (activity === "Restaurant") {
+
+    document
+      .getElementById("restaurantOptions")
+      .classList.remove("hidden");
+
   }
-  const texte =
+
+  if (activity === "Crémerie") {
+
+    document
+      .getElementById("cremerieOptions")
+      .classList.remove("hidden");
+
+  }
+
+  if (activity === "Cinéma") {
+
+    document
+      .getElementById("cinemaOptions")
+      .classList.remove("hidden");
+
+  }
+
+  if (activity === "Picnic") {
+
+    document
+      .getElementById("picnicOptions")
+      .classList.remove("hidden");
+
+  }
+
+}
+
+
+/*
+====================================================
+CORRECTION :
+AFFICHER LES OPTIONS À CHAQUE ARRIVÉE ÉTAPE 4
+====================================================
+*/
+
+const originalNextStep = nextStep;
+
+nextStep = function(number) {
+
+  originalNextStep(number);
+
+  if (number === 4) {
+
+    showOptions();
+
+  }
+
+};
+
+
+
+/*
+====================================================
+RESTAURANT : NOURRITURE
+====================================================
+*/
+
+function chooseFood(value, element) {
+
+  document
+    .querySelectorAll("#restaurantOptions .option")
+    .forEach(item => {
+
+      if (
+        item.innerHTML.includes("Tacos") ||
+        item.innerHTML.includes("Chawarma")
+      ) {
+
+        item.classList.remove("selected");
+
+      }
+
+    });
+
+
+  element.classList.add("selected");
+
+  food = value;
+
+  checkRestaurant();
+
+}
+
+
+
+/*
+====================================================
+RESTAURANT : BOISSON
+====================================================
+*/
+
+function chooseDrink(value, element) {
+
+  document
+    .querySelectorAll("#restaurantOptions .option")
+    .forEach(item => {
+
+      if (
+        item.innerHTML.includes("Coca") ||
+        item.innerHTML.includes("Fanta")
+      ) {
+
+        item.classList.remove("selected");
+
+      }
+
+    });
+
+
+  element.classList.add("selected");
+
+  drink = value;
+
+  checkRestaurant();
+
+}
+
+
+
+/*
+====================================================
+VÉRIFIER RESTAURANT
+====================================================
+*/
+
+function checkRestaurant() {
+
+  if (food && drink) {
+
+    document
+      .getElementById("subNext")
+      .classList.remove("hidden");
+
+  }
+
+}
+
+
+
+/*
+====================================================
+AUTRES ACTIVITÉS
+====================================================
+*/
+
+function chooseSingleOption(value, element) {
+
+  document
+    .querySelectorAll(".option")
+    .forEach(item => {
+      item.classList.remove("selected");
+    });
+
+
+  element.classList.add("selected");
+
+  singleOption = value;
+
+
+  document
+    .getElementById("subNext")
+    .classList.remove("hidden");
+
+}
+
+
+
+/*
+====================================================
+RÉCAPITULATIF
+====================================================
+*/
+
+document
+  .getElementById("step5")
+  .addEventListener("click", createSummary);
+
+
+function createSummary() {
+
+  let content = "";
+
+  content +=
+    "👤 <strong>Client :</strong> " +
+    nomClient +
+    "<br>";
+
+  content +=
+    "❤️ <strong>Partenaire :</strong> " +
+    nomPartenaire +
+    "<br><br>";
+
+  content +=
+    "📅 <strong>Date :</strong><br>" +
+    dateRendezVous +
+    "<br><br>";
+
+  content +=
+    "🎯 <strong>Activité :</strong><br>" +
+    activity +
+    "<br>";
+
+
+  if (activity === "Restaurant") {
+
+    content +=
+      "<br>🍽️ <strong>Nourriture :</strong><br>" +
+      food +
+      "<br><br>";
+
+    content +=
+      "🥤 <strong>Boisson :</strong><br>" +
+      drink;
+
+  } else {
+
+    content +=
+      "<br>📋 <strong>Choix :</strong><br>" +
+      singleOption;
+
+  }
+
+
+  content +=
+    "<br><br>💬 <strong>Message :</strong><br>" +
+    messageAmour +
+    " ❤️";
+
+
+  document
+    .getElementById("summary")
+    .innerHTML = content;
+
+}
+
+
+
+/*
+====================================================
+ENVOYER LA RÉPONSE À HERMANN
+====================================================
+*/
+
+function sendToClient() {
+
+  let details = "";
+
+
+  if (activity === "Restaurant") {
+
+    details =
+      "🍽️ Restaurant\n" +
+      "🌮 Nourriture : " + food + "\n" +
+      "🥤 Boisson : " + drink;
+
+  } else {
+
+    details =
+      "🎯 " + activity + "\n" +
+      "📋 Choix : " + singleOption;
+
+  }
+
+
+  const message =
+
 `❤️ LOVELINK ❤️
+
 Salut ${nomClient} ! 🥰
-${nomPartenaire} vient de faire son choix.
+
+${nomPartenaire} vient de confirmer son choix.
+
+━━━━━━━━━━━━━━
+
 🎯 ACTIVITÉ :
-${selectedActivity}
-📋 OPTION :
-${selectedOption}
+${activity}
+
+${details}
+
+━━━━━━━━━━━━━━
+
 📅 DATE :
 ${dateRendezVous}
+
 💬 MESSAGE :
 ${messageAmour} ❤️
+
 ━━━━━━━━━━━━━━
-💕 Ton/ta partenaire a confirmé son choix !`;
+
+💕 Elle a confirmé son petit programme !`;
+
+
   const url =
     "https://wa.me/" +
     numeroClient +
     "?text=" +
-    encodeURIComponent(texte);
-  window.location.href = url;
+    encodeURIComponent(message);
+
+
+  createHearts();
+
+
+  setTimeout(function() {
+
+    window.location.href = url;
+
+  }, 1000);
+
 }
+
+
+
+/*
+====================================================
+PLUIE DE CŒURS
+====================================================
+*/
+
+function createHearts() {
+
+  for (let i = 0; i < 30; i++) {
+
+    const heart =
+      document.createElement("div");
+
+    heart.className = "hearts";
+
+    heart.innerHTML =
+      ["❤️","💕","💗","💖","💘"]
+      [Math.floor(Math.random() * 5)];
+
+    heart.style.left =
+      Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+      (18 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+      (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+      heart.remove();
+
+    }, 5000);
+
+  }
+
+}
+
 </script>
+
 </body>
 </html>
