@@ -1,98 +1,392 @@
-<script>
-const commandes = {
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    "beni-chantreel": {
-        client: "Beni Mutoni",
-        partenaire: "Chantreel Bkr",
+<title>Une surprise pour Chantreel ❤️</title>
 
-        date: "29 octobre 2026",
-        heure: "12h25",
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        activites: {
-            restaurant: {
-                nom: "🍔 Restaurant",
-                options: "Fast-food, Chawarma"
-            },
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff4d79, #ff9ab5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
 
-            cinema: {
-                nom: "🎬 Cinéma",
-                options: "Cinéma public"
-            },
+.card {
+    width: 100%;
+    max-width: 430px;
+    background: rgba(255,255,255,0.97);
+    border-radius: 30px;
+    padding: 25px 18px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 2;
+}
 
-            promenade: {
-                nom: "🚶 Promenade / sortie",
-                options: "Promenade"
-            },
+.heart {
+    font-size: 60px;
+    animation: pulse 1.5s infinite;
+}
 
-            jeux: {
-                nom: "🎲 Jeux / divertissement",
-                options: "Jeux de société"
-            }
-        }
+h1 {
+    color: #ff3769;
+    margin: 8px 0;
+    font-size: 28px;
+}
+
+.intro {
+    color: #666;
+    line-height: 1.6;
+}
+
+.date {
+    background: #fff0f4;
+    color: #ff3769;
+    padding: 15px;
+    border-radius: 18px;
+    margin: 20px 0;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+h2 {
+    color: #ff3769;
+    font-size: 21px;
+}
+
+.info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 18px;
+}
+
+.activities {
+    display: grid;
+    gap: 12px;
+}
+
+.activity {
+    background: white;
+    border: 2px solid #ffd0dc;
+    border-radius: 18px;
+    padding: 15px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.activity:hover {
+    transform: scale(1.02);
+}
+
+.activity.selected {
+    background: #fff0f4;
+    border-color: #ff3769;
+    box-shadow: 0 5px 15px rgba(255,55,105,.2);
+}
+
+.activity-title {
+    color: #ff3769;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.options {
+    margin-top: 7px;
+    color: #777;
+    font-size: 13px;
+}
+
+.selection {
+    display: none;
+    margin-top: 18px;
+    background: #fff0f4;
+    padding: 14px;
+    border-radius: 18px;
+    color: #ff3769;
+}
+
+.buttons {
+    margin-top: 22px;
+    height: 90px;
+    position: relative;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.yes {
+    background: #ff3769;
+    color: white;
+    box-shadow: 0 6px 15px rgba(255,55,105,.3);
+}
+
+.no {
+    background: #eee;
+    color: #555;
+    position: relative;
+    margin-left: 8px;
+}
+
+.result {
+    display: none;
+    margin-top: 20px;
+    background: #fff0f4;
+    padding: 18px;
+    border-radius: 18px;
+    color: #ff3769;
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    animation: floatUp 5s linear forwards;
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
     }
 
-};
-
-
-// Récupérer l'ID présent dans le lien
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
-
-// Chercher la commande
-const commande = commandes[id];
-
-
-// Si la commande existe
-if (commande) {
-
-    document.getElementById("client").textContent =
-        commande.client;
-
-    document.getElementById("partenaire").textContent =
-        commande.partenaire;
-
-    document.getElementById("date").textContent =
-        commande.date;
-
-    document.getElementById("heure").textContent =
-        commande.heure;
-
-    document.getElementById("restaurant").innerHTML =
-        commande.activites.restaurant.nom +
-        "<br><small>" +
-        commande.activites.restaurant.options +
-        "</small>";
-
-    document.getElementById("cinema").innerHTML =
-        commande.activites.cinema.nom +
-        "<br><small>" +
-        commande.activites.cinema.options +
-        "</small>";
-
-    document.getElementById("promenade").innerHTML =
-        commande.activites.promenade.nom +
-        "<br><small>" +
-        commande.activites.promenade.options +
-        "</small>";
-
-    document.getElementById("jeux").innerHTML =
-        commande.activites.jeux.nom +
-        "<br><small>" +
-        commande.activites.jeux.options +
-        "</small>";
-
-} else {
-
-    document.body.innerHTML = `
-        <div style="
-        text-align:center;
-        padding:50px;
-        font-family:Arial;
-        ">
-        <h1>❤️ LoveLink</h1>
-        <p>Cette invitation n'existe pas ou n'est plus disponible.</p>
-        </div>
-    `;
+    50% {
+        transform: scale(1.15);
+    }
 }
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="heart">❤️</div>
+
+    <h1>Chantreel Bkr</h1>
+
+    <p class="intro">
+        Beni t'a préparé une petite surprise... 🥰
+        <br>
+        Et cette fois, c'est toi qui choisis notre sortie. ❤️
+    </p>
+
+    <div class="date">
+        📅 29 octobre 2026
+        <br>
+        🕐 12h25
+    </div>
+
+    <h2>💕 Choisis notre activité</h2>
+
+    <p class="info">
+        Choisis une seule proposition.
+    </p>
+
+    <div class="activities">
+
+        <div class="activity" onclick="choisir(this,'Restaurant')">
+            <div class="activity-title">
+                🍔 Restaurant
+            </div>
+
+            <div class="options">
+                Fast-food • Chawarma
+            </div>
+        </div>
+
+        <div class="activity" onclick="choisir(this,'Cinéma')">
+            <div class="activity-title">
+                🎬 Cinéma
+            </div>
+
+            <div class="options">
+                Cinéma public
+            </div>
+        </div>
+
+        <div class="activity" onclick="choisir(this,'Promenade / sortie')">
+            <div class="activity-title">
+                🚶 Promenade / sortie
+            </div>
+
+            <div class="options">
+                Promenade
+            </div>
+        </div>
+
+        <div class="activity" onclick="choisir(this,'Jeux / divertissement')">
+            <div class="activity-title">
+                🎲 Jeux / divertissement
+            </div>
+
+            <div class="options">
+                Jeux de société
+            </div>
+        </div>
+
+    </div>
+
+    <div class="selection" id="selection">
+        ❤️ Tu as choisi :
+        <strong id="choix"></strong>
+    </div>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="oui()">
+            ❤️ OUI
+        </button>
+
+        <button class="no" id="non" onclick="fuir()">
+            ❌ NON
+        </button>
+
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <div class="footer">
+        Une invitation créée avec ❤️ par LoveLink
+    </div>
+
+</div>
+
+<script>
+
+let activiteChoisie = "";
+
+function choisir(element, activite) {
+
+    activiteChoisie = activite;
+
+    document.querySelectorAll(".activity").forEach(function(item) {
+        item.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    document.getElementById("selection").style.display = "block";
+
+    document.getElementById("choix").textContent = activite;
+}
+
+
+function oui() {
+
+    if (activiteChoisie === "") {
+
+        alert("Choisis d'abord une activité ❤️");
+
+        return;
+    }
+
+    const message =
+        "❤️ NOUVELLE RÉPONSE LOVELINK ❤️\n\n" +
+        "👤 Client : Beni Mutoni\n" +
+        "❤️ Partenaire : Chantreel Bkr\n\n" +
+        "🎯 Activité choisie : " +
+        activiteChoisie +
+        "\n\n" +
+        "📅 Date : 29 octobre 2026\n" +
+        "🕐 Heure : 12h25\n\n" +
+        "❤️ Réponse : OUI";
+
+    const url =
+        "https://wa.me/243998622741?text=" +
+        encodeURIComponent(message);
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").innerHTML =
+        "🥰 C'est enregistré ! ❤️<br><br>" +
+        "Ta réponse va être envoyée à Beni.";
+
+    setTimeout(function() {
+        window.location.href = url;
+    }, 1200);
+}
+
+
+function fuir() {
+
+    const bouton = document.getElementById("non");
+
+    bouton.style.position = "fixed";
+
+    const largeur =
+        window.innerWidth - bouton.offsetWidth - 20;
+
+    const hauteur =
+        window.innerHeight - bouton.offsetHeight - 20;
+
+    const x = Math.random() * largeur;
+    const y = Math.random() * hauteur;
+
+    bouton.style.left = x + "px";
+    bouton.style.top = y + "px";
+}
+
+
+setInterval(function() {
+
+    const coeur = document.createElement("div");
+
+    coeur.className = "floating-heart";
+    coeur.innerHTML = "❤️";
+
+    coeur.style.left =
+        Math.random() * 100 + "vw";
+
+    coeur.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(coeur);
+
+    setTimeout(function() {
+        coeur.remove();
+    }, 5000);
+
+}, 900);
+
 </script>
+
+</body>
+</html>
