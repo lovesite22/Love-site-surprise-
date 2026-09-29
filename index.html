@@ -3,192 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LoveLink ❤️</title>
+<title>LoveLink — Créez un moment inoubliable</title>
 
 <style>
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --rose:#d94770;
+  --rose-dark:#b92f57;
+  --soft:#fff4f7;
+  --ink:#171318;
+  --muted:#777078;
+  --border:#eadfe3;
+  --white:#fff;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff5f7e, #ff9ab3);
-  color: white;
-  text-align: center;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-.container {
-  width: 92%;
-  max-width: 480px;
-  margin: auto;
-  padding: 35px 15px 50px;
+body{
+  font-family:"DM Sans",sans-serif;
+  background:linear-gradient(135deg,#fff7f9,#f8f4f6);
+  color:var(--ink);
+  min-height:100vh;
 }
 
-.step {
-  display: none;
-  animation: appear .45s ease;
+.container{
+  width:min(720px,94%);
+  margin:35px auto;
 }
 
-.step.active {
-  display: block;
+header{
+  text-align:center;
+  margin-bottom:25px;
 }
 
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+.logo{
+  font-family:"Playfair Display",serif;
+  font-size:38px;
+  color:var(--rose);
+}
+
+.subtitle{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.card{
+  background:white;
+  border-radius:25px;
+  padding:28px;
+  box-shadow:0 15px 45px rgba(60,30,40,.09);
+}
+
+.progress{
+  height:6px;
+  background:#eee6e9;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+.progress-bar{
+  height:100%;
+  width:20%;
+  background:var(--rose);
+  transition:.3s;
+}
+
+.step-number{
+  color:var(--rose);
+  font-weight:700;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+h1{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.description{
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.option{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  cursor:pointer;
+  background:white;
+  transition:.2s;
+}
+
+.option:hover{
+  border-color:var(--rose);
+}
+
+.option.selected{
+  background:var(--soft);
+  border:2px solid var(--rose);
+}
+
+.option-title{
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.option-text{
+  color:var(--muted);
+  font-size:13px;
+}
+
+input,textarea{
+  width:100%;
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-top:8px;
+  margin-bottom:18px;
+  font-family:inherit;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus,textarea:focus{
+  border-color:var(--rose);
+}
+
+label{
+  font-weight:600;
+  font-size:14px;
+}
+
+.buttons{
+  display:flex;
+  gap:10px;
+  margin-top:25px;
+}
+
+button{
+  border:0;
+  padding:15px 20px;
+  border-radius:14px;
+  font-family:inherit;
+  font-weight:700;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.back{
+  background:#f1ecee;
+  color:var(--ink);
+  flex:1;
+}
+
+.next{
+  background:var(--rose);
+  color:white;
+  flex:2;
+}
+
+.next:hover{
+  background:var(--rose-dark);
+}
+
+.info{
+  background:var(--soft);
+  padding:18px;
+  border-radius:17px;
+  margin:15px 0;
+}
+
+.info strong{
+  color:var(--rose);
+}
+
+.summary{
+  background:#faf7f8;
+  padding:18px;
+  border-radius:17px;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.payment{
+  border:2px solid #f0d6df;
+  background:#fff8fa;
+  padding:20px;
+  border-radius:18px;
+  margin-top:20px;
+}
+
+.payment h3{
+  margin-bottom:10px;
+}
+
+.payment p{
+  margin:6px 0;
+}
+
+.small{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none;
+}
+
+.notice{
+  margin-top:15px;
+  padding:12px;
+  background:#fff3f3;
+  border-radius:12px;
+  color:#a33;
+  font-size:14px;
+}
+
+footer{
+  text-align:center;
+  color:#999;
+  font-size:12px;
+  margin-top:20px;
+}
+
+@media(max-width:550px){
+  .container{
+    margin:20px auto;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .card{
+    padding:20px;
+    border-radius:20px;
   }
-}
 
-.heart {
-  font-size: 65px;
-  animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-  50% {
-    transform: scale(1.15);
+  .grid{
+    grid-template-columns:1fr;
   }
-}
 
-h1 {
-  font-size: 30px;
-}
+  h1{
+    font-size:26px;
+  }
 
-h2 {
-  font-size: 25px;
-}
-
-p {
-  font-size: 17px;
-  line-height: 1.5;
-}
-
-.message {
-  font-size: 23px;
-  font-weight: bold;
-  margin: 25px 0;
-}
-
-.card {
-  background: rgba(255,255,255,.18);
-  border-radius: 22px;
-  padding: 20px;
-  margin: 20px 0;
-}
-
-.date {
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 1.8;
-}
-
-.instruction {
-  background: rgba(255,255,255,.18);
-  padding: 15px;
-  border-radius: 18px;
-  margin: 20px 0;
-  font-weight: bold;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.choice {
-  background: white;
-  color: #e91e63;
-  padding: 18px 10px;
-  border-radius: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.choice:hover,
-.choice.selected {
-  background: #ffe1e9;
-  transform: scale(1.03);
-}
-
-.icon {
-  display: block;
-  font-size: 35px;
-  margin-bottom: 7px;
-}
-
-.option {
-  background: white;
-  color: #e91e63;
-  padding: 16px;
-  border-radius: 16px;
-  margin: 10px 0;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.option.selected {
-  background: #ffd6e2;
-  transform: scale(1.03);
-}
-
-button {
-  border: none;
-  border-radius: 30px;
-  padding: 16px 28px;
-  margin-top: 22px;
-  background: white;
-  color: #e91e63;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: .5;
-  cursor: not-allowed;
-}
-
-.summary {
-  text-align: left;
-  background: rgba(255,255,255,.18);
-  border-radius: 20px;
-  padding: 20px;
-  line-height: 1.9;
-}
-
-.progress {
-  font-size: 13px;
-  opacity: .8;
-  margin-bottom: 20px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.hearts {
-  position: fixed;
-  top: -30px;
-  pointer-events: none;
-  animation: fall linear forwards;
-  z-index: 1000;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
+  .logo{
+    font-size:32px;
   }
 }
 </style>
@@ -198,956 +269,752 @@ button:disabled {
 
 <div class="container">
 
-
-<!-- ================================================= -->
-<!-- ÉTAPE 1 : ACCUEIL -->
-<!-- ================================================= -->
-
-<section id="step1" class="step active">
-
-  <div class="heart">❤️</div>
-
-  <h1>Philomenn Divine</h1>
-
-  <p>
-    Hermann t'a préparé une petite surprise...
-  </p>
-
-  <div class="message">
-    « Je t'aime » ❤️
-  </div>
-
-  <div class="card">
-    <p>
-      Une petite aventure à deux t'attend. 🥰
-    </p>
-
-    <p>
-      Prête ?
-    </p>
-  </div>
-
-  <button onclick="goTo(2)">
-    💕 Découvrir la surprise
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 2 : DATE -->
-<!-- ================================================= -->
-
-<section id="step2" class="step">
-
-  <div class="progress">
-    Étape 2 ❤️
-  </div>
-
-  <div class="heart">💕</div>
-
-  <h2>Votre rendez-vous</h2>
-
-  <p>
-    Hermann a déjà choisi le moment...
-  </p>
-
-  <div class="card date">
-
-    📅 30 septembre 2026
-
-    <br>
-
-    🕛 12h10
-
-  </div>
-
-  <p>
-    Maintenant, choisis comment vous allez
-    passer ce moment ensemble. 🥰
-  </p>
-
-  <button onclick="goTo(3)">
-    Continuer ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 3 : ACTIVITÉ -->
-<!-- ================================================= -->
-
-<section id="step3" class="step">
-
-  <div class="progress">
-    Étape 3 ❤️
-  </div>
-
-  <h2>Votre moment à deux 💕</h2>
-
-  <div class="instruction">
-    Choisis UNE activité parmi les 4 proposées.
-  </div>
-
-  <div class="grid">
-
-    <div
-      class="choice"
-      onclick="selectActivity('Restaurant', this)"
-    >
-      <span class="icon">🍽️</span>
-      Restaurant
-    </div>
-
-    <div
-      class="choice"
-      onclick="selectActivity('Crémerie', this)"
-    >
-      <span class="icon">🍦</span>
-      Crémerie
-    </div>
-
-    <div
-      class="choice"
-      onclick="selectActivity('Cinéma', this)"
-    >
-      <span class="icon">🎬</span>
-      Cinéma
-    </div>
-
-    <div
-      class="choice"
-      onclick="selectActivity('Picnic', this)"
-    >
-      <span class="icon">🧺</span>
-      Picnic
-    </div>
-
-  </div>
-
-  <button
-    id="activityButton"
-    disabled
-    onclick="startActivity()"
-  >
-    Continuer ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 4A : RESTAURANT - NOURRITURE -->
-<!-- ================================================= -->
-
-<section id="step4RestaurantFood" class="step">
-
-  <div class="progress">
-    Restaurant • 1/2 ❤️
-  </div>
-
-  <h2>Commençons par le repas 🍽️</h2>
-
-  <p>
-    Qu'est-ce qui te ferait plaisir ?
-  </p>
-
-  <div class="option"
-       onclick="selectFood('🌮 Tacos', this)">
-    🌮 Tacos
-  </div>
-
-  <div class="option"
-       onclick="selectFood('🥙 Chawarma', this)">
-    🥙 Chawarma
-  </div>
-
-  <button
-    id="foodButton"
-    disabled
-    onclick="goTo(5)"
-  >
-    Choisir ma boisson 🥤
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 4B : RESTAURANT - BOISSON -->
-<!-- ================================================= -->
-
-<section id="step5" class="step">
-
-  <div class="progress">
-    Restaurant • 2/2 ❤️
-  </div>
-
-  <h2>Et pour accompagner ton repas ? 🥤</h2>
-
-  <p>
-    Choisis ta boisson.
-  </p>
-
-  <div class="option"
-       onclick="selectDrink('🥤 Coca', this)">
-    🥤 Coca
-  </div>
-
-  <div class="option"
-       onclick="selectDrink('🥤 Fanta', this)">
-    🥤 Fanta
-  </div>
-
-  <button
-    id="drinkButton"
-    disabled
-    onclick="goTo(9)"
-  >
-    Voir notre programme ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 4C : CRÉMERIE -->
-<!-- ================================================= -->
-
-<section id="stepCream" class="step">
-
-  <div class="progress">
-    Crémerie 🍦
-  </div>
-
-  <h2>Une petite douceur ? 🍦</h2>
-
-  <p>
-    Choisis votre glace.
-  </p>
-
-  <div class="option"
-       onclick="selectSingle('🍦 Cremino UPN', this)">
-    🍦 Cremino UPN
-  </div>
-
-  <div class="option"
-       onclick="selectSingle('🍦 Nice Cream Macampagne', this)">
-    🍦 Nice Cream Macampagne
-  </div>
-
-  <div class="option"
-       onclick="selectSingle('🍦 Nice Cream Bandal', this)">
-    🍦 Nice Cream Bandal
-  </div>
-
-  <button
-    id="creamButton"
-    disabled
-    onclick="goTo(9)"
-  >
-    Voir notre programme ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 4D : CINÉMA -->
-<!-- ================================================= -->
-
-<section id="stepCinema" class="step">
-
-  <div class="progress">
-    Cinéma 🎬
-  </div>
-
-  <h2>Place au cinéma 🎬</h2>
-
-  <p>
-    Quel type de cinéma préfères-tu ?
-  </p>
-
-  <div class="option"
-       onclick="selectSingle('🎬 Cinéma privé', this)">
-    🎬 Cinéma privé
-  </div>
-
-  <div class="option"
-       onclick="selectSingle('🎬 Cinéma public', this)">
-    🎬 Cinéma public
-  </div>
-
-  <button
-    id="cinemaButton"
-    disabled
-    onclick="goTo(9)"
-  >
-    Voir notre programme ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 4E : PICNIC -->
-<!-- ================================================= -->
-
-<section id="stepPicnic" class="step">
-
-  <div class="progress">
-    Picnic 🧺
-  </div>
-
-  <h2>Un petit moment romantique 🧺</h2>
-
-  <p>
-    Profiter simplement du moment à deux. ❤️
-  </p>
-
-  <div class="option"
-       onclick="selectSingle('🧺 Picnic romantique', this)">
-    🧺 Picnic romantique
-  </div>
-
-  <button
-    id="picnicButton"
-    disabled
-    onclick="goTo(9)"
-  >
-    Voir notre programme ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 6 : RÉCAPITULATIF -->
-<!-- ================================================= -->
-
-<section id="step9" class="step">
-
-  <div class="progress">
-    Dernière étape avant la confirmation ❤️
-  </div>
-
-  <div class="heart">🥰</div>
-
-  <h2>Votre petit programme</h2>
-
-  <p>
-    Voilà ce que tu as choisi...
-  </p>
-
-  <div id="summary" class="summary"></div>
-
-  <button onclick="goTo(10)">
-    C'est parfait ❤️
-  </button>
-
-</section>
-
-
-
-<!-- ================================================= -->
-<!-- ÉTAPE 7 : CONFIRMATION -->
-<!-- ================================================= -->
-
-<section id="step10" class="step">
-
-  <div class="heart">❤️</div>
-
-  <h2>Alors Philomenn...</h2>
-
-  <div class="card">
-
-    <p>
-      Est-ce que tu confirmes ce joli programme
-      avec Hermann ? 🥰
-    </p>
-
-    <div class="message">
-      Je t'aime ❤️
-    </div>
-
-  </div>
-
-  <button onclick="confirmChoice()">
-    ❤️ Oui, je confirme
-  </button>
-
-  <p>
-    Ton choix sera envoyé directement à Hermann.
-  </p>
-
-</section>
-
+<header>
+  <div class="logo">LoveLink ❤️</div>
+  <div class="subtitle">Créez un moment inoubliable.</div>
+</header>
+
+<div class="card">
+
+<div class="progress">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<div id="app"></div>
+
+<div class="buttons">
+  <button class="back" id="backBtn" onclick="back()">Retour</button>
+  <button class="next" id="nextBtn" onclick="next()">Continuer</button>
+</div>
 
 </div>
 
+<footer>
+  LoveLink — Création de sites romantiques personnalisés ❤️
+</footer>
 
+</div>
 
 <script>
 
-/*
-====================================================
-CONFIGURATION DE LA COMMANDE
-====================================================
-*/
+const WHATSAPP = "243998622741";
 
-const numeroClient = "243828373914";
+const activities = [
+  ["🍽️","Restaurant","Un moment gourmand à deux"],
+  ["🍦","Glace","Une petite douceur ensemble"],
+  ["🎬","Cinéma","Un film et un moment complice"],
+  ["🧺","Picnic","Un moment tranquille à deux"],
+  ["🚶","Promenade / sortie","Une balade ou une sortie"],
+  ["🎮","Jeux / divertissement","Un moment amusant"],
+  ["📸","Photos / shooting","Créer de beaux souvenirs"],
+  ["💝","Surprise romantique","Une attention spéciale"]
+];
 
-const nomClient = "Hermann";
+const foods = [
+  "Tacos",
+  "Chawarma",
+  "Poulet frit",
+  "Pizza",
+  "Burger",
+  "Pâtes",
+  "Grillade",
+  "Cuisine congolaise",
+  "Fast-food",
+  "Restaurant chic"
+];
 
-const nomPartenaire = "Philomenn Divine";
+const drinks = [
+  "Jus de fruit",
+  "Coca",
+  "Fanta",
+  "Bavaria",
+  "Savana",
+  "Bière",
+  "Whisky",
+  "Vody",
+  "Xtra",
+  "Eau"
+];
 
-const dateRendezVous =
-  "30 septembre 2026 à 12h10";
+const iceCreams = [
+  "Cremino — UPN",
+  "Nice Cream — Macampagne",
+  "Nice Cream — Bandal"
+];
 
-const messageAmour =
-  "Je t'aime";
+const cinema = [
+  "Cinéma privé",
+  "Cinéma public"
+];
+
+const picnic = [
+  "Picnic au calme",
+  "Picnic au coucher du soleil",
+  "Picnic romantique",
+  "Picnic + photos"
+];
+
+const promenade = [
+  "Promenade",
+  "Sortie en ville",
+  "Balade + photos",
+  "Sortie surprise"
+];
+
+const games = [
+  "Jeux vidéo",
+  "Bowling",
+  "Jeux de société",
+  "Activité ludique"
+];
+
+const photos = [
+  "Shooting romantique",
+  "Photos au coucher du soleil",
+  "Photos de couple",
+  "Mini séance surprise"
+];
+
+const surprises = [
+  "Cadeau surprise",
+  "Lettre romantique",
+  "Chocolats",
+  "Surprise personnalisée"
+];
+
+let step = 1;
+
+let data = {
+  activities:[],
+  options:{},
+  drinks:[],
+  dateChoice:"",
+  date:"",
+  time:"",
+  client:"",
+  girlfriend:"",
+  message:""
+};
+
+function render(){
+
+  document.getElementById("progress").style.width =
+    (step * 20) + "%";
+
+  document.getElementById("backBtn").style.display =
+    step === 1 ? "none" : "block";
+
+  document.getElementById("nextBtn").textContent =
+    step === 5 ? "Commander sur WhatsApp" : "Continuer";
+
+  if(step === 1) renderActivities();
+  if(step === 2) renderOptions();
+  if(step === 3) renderDate();
+  if(step === 4) renderNames();
+  if(step === 5) renderPayment();
+}
 
 
-/*
-====================================================
-VARIABLES
-====================================================
-*/
+/* ÉTAPE 1 */
 
-let selectedActivity = "";
+function renderActivities(){
 
-let selectedFood = "";
+  document.getElementById("app").innerHTML = `
 
-let selectedDrink = "";
+    <div class="step-number">ÉTAPE 1 / 5</div>
 
-let selectedSingle = "";
+    <h1>Choisissez 4 activités ❤️</h1>
+
+    <p class="description">
+      Sélectionnez exactement 4 activités.
+      Elles seront proposées à votre partenaire
+      sur son site personnalisé.
+    </p>
+
+    <div class="grid">
+
+      ${activities.map((a,i)=>`
+
+        <div class="option ${data.activities.includes(a[1])?'selected':''}"
+             onclick="toggleActivity('${a[1]}')">
+
+          <div style="font-size:28px">${a[0]}</div>
+
+          <div class="option-title">${a[1]}</div>
+
+          <div class="option-text">${a[2]}</div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+    <div class="info">
+      <strong>${data.activities.length}/4</strong>
+      activités sélectionnées
+    </div>
+  `;
+}
+
+function toggleActivity(name){
+
+  if(data.activities.includes(name)){
+
+    data.activities =
+      data.activities.filter(x=>x!==name);
+
+  }else{
+
+    if(data.activities.length >= 4){
+
+      alert("Vous devez sélectionner exactement 4 activités.");
+
+      return;
+    }
+
+    data.activities.push(name);
+  }
+
+  renderActivities();
+}
 
 
-/*
-====================================================
-NAVIGATION
-====================================================
-*/
+/* ÉTAPE 2 */
 
-function goTo(stepId) {
+function renderOptions(){
 
-  document
-    .querySelectorAll(".step")
-    .forEach(step => {
+  let html = `
 
-      step.classList.remove("active");
+    <div class="step-number">ÉTAPE 2 / 5</div>
 
-    });
+    <h1>Personnalisez les activités</h1>
 
+    <p class="description">
+      Choisissez les détails qui apparaîtront
+      sur le site de votre partenaire.
+    </p>
+  `;
 
-  document
-    .getElementById(
-      typeof stepId === "number"
-        ? "step" + stepId
-        : stepId
-    )
-    .classList.add("active");
+  data.activities.forEach(activity=>{
 
+    html += `
+      <div class="info">
+        <strong>${activity}</strong>
+      </div>
+    `;
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    if(activity==="Restaurant"){
+
+      html += makeOptions(
+        "🍽️ Choix des plats",
+        foods,
+        "foods",
+        4
+      );
+
+      html += makeOptions(
+        "🥤 Choix des boissons",
+        drinks,
+        "drinks",
+        4
+      );
+
+    }
+
+    if(activity==="Glace"){
+
+      html += makeOptions(
+        "🍦 Choisissez les glaciers",
+        iceCreams,
+        "ice",
+        4
+      );
+
+    }
+
+    if(activity==="Cinéma"){
+
+      html += makeOptions(
+        "🎬 Type de cinéma",
+        cinema,
+        "cinema",
+        1
+      );
+
+    }
+
+    if(activity==="Picnic"){
+
+      html += makeOptions(
+        "🧺 Type de picnic",
+        picnic,
+        "picnic",
+        4
+      );
+
+    }
+
+    if(activity==="Promenade / sortie"){
+
+      html += makeOptions(
+        "🚶 Type de sortie",
+        promenade,
+        "promenade",
+        4
+      );
+
+    }
+
+    if(activity==="Jeux / divertissement"){
+
+      html += makeOptions(
+        "🎮 Type de divertissement",
+        games,
+        "games",
+        4
+      );
+
+    }
+
+    if(activity==="Photos / shooting"){
+
+      html += makeOptions(
+        "📸 Type de séance",
+        photos,
+        "photos",
+        4
+      );
+
+    }
+
+    if(activity==="Surprise romantique"){
+
+      html += makeOptions(
+        "💝 Type de surprise",
+        surprises,
+        "surprise",
+        4
+      );
+
+    }
+
   });
 
+  document.getElementById("app").innerHTML = html;
+}
 
-  if (stepId === 9) {
+function makeOptions(title,list,key,max){
 
-    buildSummary();
+  if(!data.options[key])
+    data.options[key]=[];
 
+  return `
+
+    <h3 style="margin:18px 0 10px">${title}</h3>
+
+    <div class="grid">
+
+      ${list.map(item=>`
+
+        <div class="option
+          ${data.options[key].includes(item)?'selected':''}"
+
+          onclick="toggleOption('${key}','${item.replace(/'/g,"\\'")}',${max})">
+
+          <div class="option-title">${item}</div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+    <p class="small" style="margin-top:8px">
+      Jusqu'à ${max} choix
+    </p>
+  `;
+}
+
+function toggleOption(key,item,max){
+
+  if(!data.options[key])
+    data.options[key]=[];
+
+  if(data.options[key].includes(item)){
+
+    data.options[key] =
+      data.options[key].filter(x=>x!==item);
+
+  }else{
+
+    if(data.options[key].length >= max){
+
+      alert("Nombre maximum de choix atteint.");
+
+      return;
+    }
+
+    data.options[key].push(item);
   }
 
+  renderOptions();
 }
 
 
-/*
-====================================================
-CHOISIR ACTIVITÉ
-====================================================
-*/
+/* ÉTAPE 3 */
 
-function selectActivity(activity, element) {
+function renderDate(){
 
-  selectedActivity = activity;
+  document.getElementById("app").innerHTML = `
 
-  selectedFood = "";
+    <div class="step-number">ÉTAPE 3 / 5</div>
 
-  selectedDrink = "";
+    <h1>Qui choisit la date ?</h1>
 
-  selectedSingle = "";
+    <p class="description">
+      Vous pouvez choisir la date vous-même,
+      ou laisser votre partenaire la choisir
+      directement sur son site.
+    </p>
 
+    <div class="grid">
 
-  document
-    .querySelectorAll("#step3 .choice")
-    .forEach(choice => {
+      <div class="option
+        ${data.dateChoice==="Moi"?'selected':''}"
+        onclick="chooseDate('Moi')">
 
-      choice.classList.remove("selected");
+        <div style="font-size:28px">🙋</div>
 
-    });
+        <div class="option-title">Moi</div>
 
+        <div class="option-text">
+          Je choisis la date et l'heure.
+        </div>
 
-  element.classList.add("selected");
+      </div>
 
+      <div class="option
+        ${data.dateChoice==="Elle"?'selected':''}"
+        onclick="chooseDate('Elle')">
 
-  document
-    .getElementById("activityButton")
-    .disabled = false;
+        <div style="font-size:28px">💑</div>
 
+        <div class="option-title">Elle</div>
+
+        <div class="option-text">
+          Elle choisira la date sur son site.
+        </div>
+
+      </div>
+
+    </div>
+
+    ${data.dateChoice==="Moi" ? `
+
+      <div style="margin-top:20px">
+
+        <label>Date</label>
+        <input
+          type="date"
+          id="date"
+          value="${data.date}"
+          onchange="data.date=this.value"
+        >
+
+        <label>Heure</label>
+        <input
+          type="time"
+          id="time"
+          value="${data.time}"
+          onchange="data.time=this.value"
+        >
+
+      </div>
+
+    ` : ""}
+
+  `;
+}
+
+function chooseDate(choice){
+
+  data.dateChoice=choice;
+
+  renderDate();
 }
 
 
-/*
-====================================================
-COMMENCER LES SOUS-ÉTAPES
-====================================================
-*/
+/* ÉTAPE 4 */
 
-function startActivity() {
+function renderNames(){
 
-  if (selectedActivity === "Restaurant") {
+  document.getElementById("app").innerHTML = `
 
-    resetRestaurant();
+    <div class="step-number">ÉTAPE 4 / 5</div>
 
-    goTo("step4RestaurantFood");
+    <h1>Quelques informations ❤️</h1>
+
+    <p class="description">
+      Ces informations permettent de personnaliser
+      votre commande.
+    </p>
+
+    <label>Votre prénom / nom</label>
+    <input
+      placeholder="Ex : Hermann"
+      value="${data.client}"
+      oninput="data.client=this.value"
+    >
+
+    <label>Prénom de votre partenaire</label>
+    <input
+      placeholder="Ex : Philomenn"
+      value="${data.girlfriend}"
+      oninput="data.girlfriend=this.value"
+    >
+
+    <label>Message personnalisé <span class="small">(facultatif)</span></label>
+
+    <textarea
+      rows="5"
+      placeholder="Votre petit message..."
+      oninput="data.message=this.value"
+    >${data.message}</textarea>
+
+  `;
+}
+
+
+/* ÉTAPE 5 */
+
+function renderPayment(){
+
+  document.getElementById("app").innerHTML = `
+
+    <div class="step-number">ÉTAPE 5 / 5</div>
+
+    <h1>Votre commande est prête ❤️</h1>
+
+    <p class="description">
+      Votre site romantique personnalisé coûte
+      <strong>7 $</strong> ou l'équivalent en francs congolais.
+    </p>
+
+    <div class="payment">
+
+      <h3>💳 Paiement</h3>
+
+      <p><strong>Airtel Money :</strong> 0998622741</p>
+
+      <p><strong>M-Pesa :</strong> +243 828 373 914</p>
+
+      <p class="small">
+        Après le paiement, envoyez une capture
+        ou une photo de la preuve de paiement
+        sur WhatsApp.
+      </p>
+
+    </div>
+
+    <div class="summary">
+
+      <strong>Résumé de votre commande</strong>
+
+      <br><br>
+
+      👤 Client :
+      ${data.client || "Non renseigné"}
+
+      <br>
+
+      ❤️ Partenaire :
+      ${data.girlfriend || "Non renseigné"}
+
+      <br><br>
+
+      <strong>Activités :</strong>
+
+      <br>
+
+      ${data.activities.join("<br>")}
+
+      <br><br>
+
+      <strong>Date :</strong>
+
+      ${data.dateChoice==="Moi"
+        ? data.date+" à "+data.time
+        : "Elle choisira la date"}
+
+    </div>
+
+    <div class="info">
+
+      📲 Après avoir effectué le paiement,
+      cliquez sur <strong>Commander sur WhatsApp</strong>.
+
+      <br><br>
+
+      Votre commande sera envoyée directement
+      à LoveLink.
+
+    </div>
+
+  `;
+}
+
+
+/* NAVIGATION */
+
+function next(){
+
+  if(step===1){
+
+    if(data.activities.length!==4){
+
+      alert("Sélectionnez exactement 4 activités.");
+
+      return;
+    }
+  }
+
+  if(step===3){
+
+    if(!data.dateChoice){
+
+      alert("Choisissez qui choisira la date.");
+
+      return;
+    }
+
+    if(data.dateChoice==="Moi" &&
+       (!data.date || !data.time)){
+
+      alert("Veuillez choisir la date et l'heure.");
+
+      return;
+    }
+  }
+
+  if(step===4){
+
+    if(!data.client || !data.girlfriend){
+
+      alert("Veuillez remplir les deux noms.");
+
+      return;
+    }
+  }
+
+  if(step===5){
+
+    sendWhatsApp();
 
     return;
-
   }
 
+  step++;
 
-  if (selectedActivity === "Crémerie") {
+  render();
+}
 
-    resetSingleOptions("creamButton");
+function back(){
 
-    goTo("stepCream");
+  if(step>1){
 
-    return;
+    step--;
 
-  }
-
-
-  if (selectedActivity === "Cinéma") {
-
-    resetSingleOptions("cinemaButton");
-
-    goTo("stepCinema");
-
-    return;
+    render();
 
   }
-
-
-  if (selectedActivity === "Picnic") {
-
-    resetSingleOptions("picnicButton");
-
-    goTo("stepPicnic");
-
-    return;
-
-  }
-
 }
 
 
-/*
-====================================================
-RESTAURANT
-====================================================
-*/
+/* WHATSAPP */
 
-function resetRestaurant() {
+function sendWhatsApp(){
 
-  selectedFood = "";
+  let message = `
 
-  selectedDrink = "";
+❤️ NOUVELLE COMMANDE LOVELINK ❤️
 
-  document
-    .getElementById("foodButton")
-    .disabled = true;
+👤 Client :
+${data.client}
 
-  document
-    .getElementById("drinkButton")
-    .disabled = true;
-
-
-  document
-    .querySelectorAll(
-      "#step4RestaurantFood .option"
-    )
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-
-  document
-    .querySelectorAll(
-      "#step5 .option"
-    )
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-}
-
-
-/*
-====================================================
-CHOISIR NOURRITURE
-====================================================
-*/
-
-function selectFood(food, element) {
-
-  selectedFood = food;
-
-
-  document
-    .querySelectorAll(
-      "#step4RestaurantFood .option"
-    )
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-
-  element.classList.add("selected");
-
-
-  document
-    .getElementById("foodButton")
-    .disabled = false;
-
-}
-
-
-/*
-====================================================
-CHOISIR BOISSON
-====================================================
-*/
-
-function selectDrink(drink, element) {
-
-  selectedDrink = drink;
-
-
-  document
-    .querySelectorAll(
-      "#step5 .option"
-    )
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-
-  element.classList.add("selected");
-
-
-  document
-    .getElementById("drinkButton")
-    .disabled = false;
-
-}
-
-
-/*
-====================================================
-AUTRES SOUS-ACTIVITÉS
-====================================================
-*/
-
-function resetSingleOptions(buttonId) {
-
-  selectedSingle = "";
-
-
-  document
-    .querySelectorAll(".option")
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-
-  document
-    .getElementById(buttonId)
-    .disabled = true;
-
-}
-
-
-function selectSingle(value, element) {
-
-  selectedSingle = value;
-
-
-  const parent =
-    element.parentElement;
-
-
-  parent
-    .querySelectorAll(".option")
-    .forEach(option => {
-
-      option.classList.remove("selected");
-
-    });
-
-
-  element.classList.add("selected");
-
-
-  if (selectedActivity === "Crémerie") {
-
-    document
-      .getElementById("creamButton")
-      .disabled = false;
-
-  }
-
-
-  if (selectedActivity === "Cinéma") {
-
-    document
-      .getElementById("cinemaButton")
-      .disabled = false;
-
-  }
-
-
-  if (selectedActivity === "Picnic") {
-
-    document
-      .getElementById("picnicButton")
-      .disabled = false;
-
-  }
-
-}
-
-
-/*
-====================================================
-RÉCAPITULATIF
-====================================================
-*/
-
-function buildSummary() {
-
-  let html = "";
-
-  html +=
-    "👤 <strong>Client :</strong> " +
-    nomClient +
-    "<br>";
-
-  html +=
-    "❤️ <strong>Partenaire :</strong> " +
-    nomPartenaire +
-    "<br><br>";
-
-  html +=
-    "📅 <strong>Rendez-vous :</strong><br>" +
-    dateRendezVous +
-    "<br><br>";
-
-  html +=
-    "🎯 <strong>Activité :</strong><br>" +
-    selectedActivity +
-    "<br><br>";
-
-
-  if (selectedActivity === "Restaurant") {
-
-    html +=
-      "🍽️ <strong>Nourriture :</strong><br>" +
-      selectedFood +
-      "<br><br>";
-
-    html +=
-      "🥤 <strong>Boisson :</strong><br>" +
-      selectedDrink;
-
-  } else {
-
-    html +=
-      "📋 <strong>Choix :</strong><br>" +
-      selectedSingle;
-
-  }
-
-
-  html +=
-    "<br><br>💬 <strong>Message :</strong><br>" +
-    messageAmour +
-    " ❤️";
-
-
-  document
-    .getElementById("summary")
-    .innerHTML = html;
-
-}
-
-
-/*
-====================================================
-CONFIRMATION + WHATSAPP
-====================================================
-*/
-
-function confirmChoice() {
-
-  let choices = "";
-
-
-  if (selectedActivity === "Restaurant") {
-
-    choices =
-      "🍽️ Restaurant\n" +
-      "🌮 Nourriture : " +
-      selectedFood +
-      "\n" +
-      "🥤 Boisson : " +
-      selectedDrink;
-
-  } else {
-
-    choices =
-      "🎯 Activité : " +
-      selectedActivity +
-      "\n" +
-      "📋 Choix : " +
-      selectedSingle;
-
-  }
-
-
-  const whatsappMessage =
-
-`❤️ LOVELINK ❤️
-
-Salut ${nomClient} ! 🥰
-
-${nomPartenaire} vient de confirmer son choix.
+❤️ Partenaire :
+${data.girlfriend}
 
 ━━━━━━━━━━━━━━
 
-${choices}
+🎯 ACTIVITÉS :
+
+${data.activities.join("\n")}
+
+━━━━━━━━━━━━━━
+
+📋 OPTIONS :
+
+`;
+
+  for(const key in data.options){
+
+    if(data.options[key].length){
+
+      message +=
+        "\n" +
+        key.toUpperCase() +
+        " :\n" +
+        data.options[key].join(", ") +
+        "\n";
+    }
+  }
+
+  if(data.options.drinks &&
+     data.options.drinks.length){
+
+    message +=
+      "\n🥤 BOISSONS :\n" +
+      data.options.drinks.join(", ") +
+      "\n";
+  }
+
+  message += `
 
 ━━━━━━━━━━━━━━
 
 📅 DATE :
-${dateRendezVous}
 
-💬 MESSAGE :
-${messageAmour} ❤️
+${data.dateChoice==="Moi"
+  ? data.date+" à "+data.time
+  : "Elle choisira la date"}
 
 ━━━━━━━━━━━━━━
 
-💕 Elle a confirmé son rendez-vous !`;
+💬 MESSAGE :
 
+${data.message || "Aucun message"}
 
-  createHearts();
+━━━━━━━━━━━━━━
 
+💰 PRIX :
+7 $ ou équivalent en francs congolais
 
-  const whatsappURL =
+📸 Preuve de paiement :
+À envoyer dans cette conversation WhatsApp.
+
+`;
+
+  const url =
     "https://wa.me/" +
-    numeroClient +
+    WHATSAPP +
     "?text=" +
-    encodeURIComponent(
-      whatsappMessage
-    );
+    encodeURIComponent(message);
 
-
-  setTimeout(() => {
-
-    window.location.href =
-      whatsappURL;
-
-  }, 900);
-
+  window.location.href = url;
 }
 
-
-/*
-====================================================
-ANIMATION COEURS
-====================================================
-*/
-
-function createHearts() {
-
-  for (let i = 0; i < 35; i++) {
-
-    const heart =
-      document.createElement("div");
-
-    heart.className =
-      "hearts";
-
-    const hearts = [
-      "❤️",
-      "💕",
-      "💗",
-      "💖",
-      "💘"
-    ];
-
-    heart.innerHTML =
-      hearts[
-        Math.floor(
-          Math.random() *
-          hearts.length
-        )
-      ];
-
-    heart.style.left =
-      Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-      (18 + Math.random() * 20) + "px";
-
-    heart.style.animationDuration =
-      (2 + Math.random() * 3) + "s";
-
-    document.body.appendChild(
-      heart
-    );
-
-
-    setTimeout(() => {
-
-      heart.remove();
-
-    }, 5000);
-
-  }
-
-}
+render();
 
 </script>
 
