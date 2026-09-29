@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Chantreel ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 92%;
+  max-width: 430px;
+  background: white;
+  border-radius: 25px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.heart {
+  font-size: 55px;
+  animation: pulse 1.5s infinite;
+}
+
+h1 {
+  color: #ff3f6c;
+  margin: 10px 0;
+}
+
+.subtitle {
+  color: #777;
+  line-height: 1.5;
+}
+
+.box {
+  background: #fff0f4;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 18px 0;
+  text-align: left;
+}
+
+.box h3 {
+  margin-top: 0;
+  color: #ff3f6c;
+}
+
+.item {
+  padding: 7px 0;
+  border-bottom: 1px solid #ffd6df;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.date {
+  background: #ff3f6c;
+  color: white;
+  padding: 14px;
+  border-radius: 15px;
+  margin: 18px 0;
+  font-weight: bold;
+}
+
+button {
+  border: none;
+  background: #ff3f6c;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255,63,108,0.3);
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+.hidden {
+  display: none;
+}
+
+.message {
+  margin-top: 20px;
+  color: #ff3f6c;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.small {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #999;
+}
+
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="heart">❤️</div>
+
+  <h1>Chantreel Bkr</h1>
+
+  <p class="subtitle">
+    Une petite surprise rien que pour toi... 💕
+  </p>
+
+  <div class="box">
+    <h3>💌 Une sortie à deux ?</h3>
+
+    <div class="item">🍔 <strong>Restaurant :</strong> Fast-food ou Chawarma</div>
+
+    <div class="item">🎬 <strong>Cinéma :</strong> Cinéma public</div>
+
+    <div class="item">🚶 <strong>Promenade :</strong> Une petite promenade</div>
+
+    <div class="item">🎲 <strong>Jeux :</strong> Jeux de société</div>
+
+    <div class="item">🥤 <strong>Boissons :</strong> Jus de fruit ou Whisky</div>
+  </div>
+
+  <div class="date">
+    📅 29 octobre 2026<br>
+    🕐 12h25
+  </div>
+
+  <button onclick="showMessage()">
+    💕 Découvrir la surprise
+  </button>
+
+  <div id="message" class="message hidden">
+    J'espère que cette petite sortie te fera plaisir. 🥰<br><br>
+    Alors... on se retrouve le 29 octobre ? ❤️
+  </div>
+
+  <p class="small">
+    Une invitation préparée avec ❤️
+  </p>
+
+</div>
+
+<script>
+function showMessage() {
+  document.getElementById("message").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
