@@ -220,19 +220,6 @@ button{
   color:var(--muted);
 }
 
-.hidden{
-  display:none;
-}
-
-.notice{
-  margin-top:15px;
-  padding:12px;
-  background:#fff3f3;
-  border-radius:12px;
-  color:#a33;
-  font-size:14px;
-}
-
 footer{
   text-align:center;
   color:#999;
@@ -301,7 +288,7 @@ const WHATSAPP = "243998622741";
 
 const activities = [
   ["🍽️","Restaurant","Un moment gourmand à deux"],
-  ["🍦","Glace","Une petite douceur ensemble"],
+  ["🍦","Crémerie","Une petite douceur ensemble"],
   ["🎬","Cinéma","Un film et un moment complice"],
   ["🧺","Picnic","Un moment tranquille à deux"],
   ["🚶","Promenade / sortie","Une balade ou une sortie"],
@@ -337,9 +324,8 @@ const drinks = [
 ];
 
 const iceCreams = [
-  "Cremino — UPN",
-  "Nice Cream — Macampagne",
-  "Nice Cream — Bandal"
+  "Cremino",
+  "Nice cream"
 ];
 
 const cinema = [
@@ -522,13 +508,13 @@ function renderOptions(){
 
     }
 
-    if(activity==="Glace"){
+    if(activity==="Crémerie"){
 
       html += makeOptions(
-        "🍦 Choisissez les glaciers",
+        "🍦 Choisissez les options de crémerie",
         iceCreams,
         "ice",
-        4
+        2
       );
 
     }
@@ -539,7 +525,7 @@ function renderOptions(){
         "🎬 Type de cinéma",
         cinema,
         "cinema",
-        1
+        2
       );
 
     }
@@ -762,14 +748,14 @@ function renderNames(){
 
     <label>Votre prénom / nom</label>
     <input
-      placeholder="Ex : Hermann"
+      placeholder="Ex : Lucas"
       value="${data.client}"
       oninput="data.client=this.value"
     >
 
     <label>Prénom de votre partenaire</label>
     <input
-      placeholder="Ex : Philomenn"
+      placeholder="Ex : Axael"
       value="${data.girlfriend}"
       oninput="data.girlfriend=this.value"
     >
